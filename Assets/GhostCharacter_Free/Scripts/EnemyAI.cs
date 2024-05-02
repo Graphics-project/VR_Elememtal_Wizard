@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
 
-    //Patroling
+    //Patrolling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
@@ -22,7 +22,8 @@ public class EnemyAI : MonoBehaviour
 
     //States
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange = true;  // This is set to disable patrolling
+    public bool playerInAttackRange;
 
     private void Awake()
     {
@@ -36,12 +37,12 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        // if (!playerInSightRange && !playerInAttackRange) Patrolling(); // This is set to disable patrolling
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 
-    private void Patroling()
+    private void Patrolling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
