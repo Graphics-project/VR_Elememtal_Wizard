@@ -16,7 +16,32 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: ff4e1f6b5d4b6dd43a1703810d731c20
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 506ff7550b5114a6aa6d9a3396ff8e95
+    m_Address: Assets/GhostCharacter_Free/AnimationClips/ghost_dissolve.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bdb5b47dd4fff45a89a80d4abe856294
+    m_Address: Assets/GhostCharacter_Free/AnimationClips/ghost_attack.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 814f3c6ec45d94785b046de04084086d
+    m_Address: Assets/GhostCharacter_Free/AnimationClips/ghost_damaged.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c01f85ff72a3477ea14feee64280f31
+    m_Address: Assets/GhostCharacter_Free/AnimationClips/ghost_idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1efea2309434b4778947a08347761298
+    m_Address: Assets/GhostCharacter_Free/AnimationClips/ghost_run.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2fa1e09364e549449960abbb5f28ed2e, type: 2}
   m_SchemaSet:

@@ -8,10 +8,10 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-    public float health;
+    public int HP;
 
     private Animator Anim;
-    private CharacterController Ctrl;
+    private int layer;
 
     //Patrolling
     public Vector3 walkPoint;
@@ -22,115 +22,140 @@ public class EnemyAI : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    public GameObject projectile2;
 
     //States
     public float sightRange, attackRange;
-    public bool playerInSightRange = true;  // This is set to disable patrolling
+    public bool playerInSightRange;
     public bool playerInAttackRange;
 
     // Cache hash values
-    private static readonly int MoveState = Animator.StringToHash("Base Layer.move");
-    private static readonly int SurprisedState = Animator.StringToHash("Base Layer.surprised");
-    private static readonly int AttackState = Animator.StringToHash("Base Layer.attack_shift");
-    private static readonly int DissolveState = Animator.StringToHash("Base Layer.dissolve");
-    private static readonly int AttackTag = Animator.StringToHash("Attack");
+    private int MoveState;
+    private int DamagedState;
+    private int AttackState;
+    private int AttackState2;
+    private int DissolveState;
+
+
     // dissolve
     [SerializeField] private SkinnedMeshRenderer[] MeshR;
     private float Dissolve_value = 1;
     private bool DissolveFlg = false;
-    private const int maxHP = 3;
-    private int HP = maxHP;
 
 
-    private const int Dissolve = 1;
+    private const int Die = 0;
+    private const int Move = 1;
     private const int Attack = 2;
-    private const int Surprised = 3;
-    private Dictionary<int, bool> PlayerStatus = new Dictionary<int, bool>
+    private const int Damaged = 3;
+    private Dictionary<int, bool> status = new Dictionary<int, bool>
     {
-        {Dissolve, false },
+        {Die, false },
+        {Move, false },
         {Attack, false },
-        {Surprised, false },
+        {Damaged, false },
     };
 
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
-        //Anim = GetComponent<Animator>();
+        Anim = GetComponent<Animator>();
+        string currentTag = gameObject.tag;
+
+        if (currentTag == "Ghost")
+        {
+            layer = 0;
+            Anim.SetLayerWeight(0, 1);
+            agent.speed = 3f;
+            MoveState = Animator.StringToHash("Ghost Layer.move");
+            DamagedState = Animator.StringToHash("Ghost Layer.damaged");
+            AttackState = Animator.StringToHash("Ghost Layer.attack_shift");
+            DissolveState = Animator.StringToHash("Ghost Layer.dissolve");
+        }
+        else if (currentTag == "Mummy")
+        {
+            layer = 1;
+            Anim.SetLayerWeight(1, 1);
+            agent.speed = 3f;
+            MoveState = Animator.StringToHash("Mummy Layer.Move");
+        }
+        else if (currentTag == "Golem")
+        {
+            layer = 2;
+            Anim.SetLayerWeight(2, 1);
+            agent.speed = 1.5f;
+            MoveState = Animator.StringToHash("Golem Layer.Walk");
+            DamagedState = Animator.StringToHash("Golem Layer.GetHit");
+            AttackState = Animator.StringToHash("Golem Layer.Attack01");
+            AttackState2 = Animator.StringToHash("Golem Layer.Attack02");
+            DissolveState = Animator.StringToHash("Golem Layer.Die");
+        }
     }
 
     private void Update()
     {
         STATUS();
         // this character status
-        if (PlayerStatus.ContainsValue(true))
+        if (status.ContainsValue(true))
         {
             int status_name = 0;
-            foreach (var i in PlayerStatus)
-            {
+            foreach (var i in status)
                 if (i.Value == true)
                 {
                     status_name = i.Key;
                     break;
                 }
-            }
-            if (status_name == Dissolve)
-            {
-                PlayerDissolve();
-            }
-            else if (status_name == Surprised)
-            {
-                // nothing method
-            }
-        }
-        // Dissolve
-        if (HP <= 0 && !DissolveFlg)
-        {
-            Anim.CrossFade(DissolveState, 0.1f, 0, 0);
-            DissolveFlg = true;
-        }
 
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        // if (!playerInSightRange && !playerInAttackRange) Patrolling(); // This is set to disable patrolling
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+            if (status_name == Die)
+                Dissolve();
+            else if (status_name == Move)
+                ChasePlayer();
+            else if (status_name == Attack)
+                AttackPlayer();
+            else if (status_name == Damaged)
+                TakeDamage(1);
+        }
     }
 
     private void STATUS()
     {
-        // during dissolve
+        //Check for sight and attack range
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+        // during die
         if (DissolveFlg && HP <= 0)
-        {
-            PlayerStatus[Dissolve] = true;
-        }
+            status[Die] = true;
         else if (!DissolveFlg)
+            status[Die] = false;
+
+        // during moving & attacking
+        if ((playerInSightRange && playerInAttackRange))
         {
-            PlayerStatus[Dissolve] = false;
+            status[Attack] = true;
+            status[Move] = false;
         }
-        // during attacking
-        if (Anim.GetCurrentAnimatorStateInfo(0).tagHash == AttackTag)
+        else if (playerInSightRange && !playerInAttackRange)
         {
-            PlayerStatus[Attack] = true;
+            status[Attack] = false;
+            status[Move] = true;
         }
-        else if (Anim.GetCurrentAnimatorStateInfo(0).tagHash != AttackTag)
+        else if (!playerInSightRange)
         {
-            PlayerStatus[Attack] = false;
+            status[Attack] = false;
+            status[Move] = false;
+            agent.SetDestination(transform.position);
         }
+
         // during damaging
-        if (Anim.GetCurrentAnimatorStateInfo(0).fullPathHash == SurprisedState)
-        {
-            PlayerStatus[Surprised] = true;
-        }
-        else if (Anim.GetCurrentAnimatorStateInfo(0).fullPathHash != SurprisedState)
-        {
-            PlayerStatus[Surprised] = false;
-        }
+        if (Anim.GetCurrentAnimatorStateInfo(layer).fullPathHash == DamagedState)
+            status[Damaged] = true;
+        else if (Anim.GetCurrentAnimatorStateInfo(layer).fullPathHash != DamagedState)
+            status[Damaged] = false;
     }
+
     // dissolve shading
-    private void PlayerDissolve()
+    private void Dissolve()
     {
         Dissolve_value -= Time.deltaTime;
         for (int i = 0; i < MeshR.Length; i++)
@@ -139,8 +164,10 @@ public class EnemyAI : MonoBehaviour
         }
         if (Dissolve_value <= 0)
         {
-            Ctrl.enabled = false;
+            DestroyEnemy();
         }
+        //Anim.CrossFade(DissolveState, 0.1f, 0, 0);
+        //DissolveFlg = true;
     }
 
     private void Patrolling()
@@ -170,10 +197,9 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-
+        Anim.Play(MoveState);
         transform.LookAt(player);
     }
-
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
@@ -183,27 +209,38 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            Anim.CrossFade(AttackState, 0.15f, 0, 0);
-            rb.AddForce(transform.forward * 2f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 4f, ForceMode.Impulse);
-            ///End of attack code
+            //Attack code here
+            if (layer == 2 && Physics.CheckSphere(transform.position, attackRange/2, whatIsPlayer))
+            {
+                Anim.CrossFade(AttackState2, 0.15f, layer, 0.3f);
+                Instantiate(projectile2);
+            }         
+            else
+            {
+                Anim.CrossFade(AttackState, 0.15f, layer, 0.3f);
+                InstantiateProjectile(projectile);
+            }
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+    private void InstantiateProjectile(GameObject projectile)
+    {
+        Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 2f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 5f, ForceMode.Impulse);
+    }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
     }
-
     public void TakeDamage(int damage)
     {
-        Anim.CrossFade(SurprisedState, 0.1f, 0, 0);
-        health -= damage;
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        Anim.CrossFade(DamagedState, 0.1f, layer, 0);
+        HP -= damage;
+        //if (HP <= 0) Dissolve(); // Invoke(nameof(DestroyEnemy), 0.5f);
     }
     private void DestroyEnemy()
     {
