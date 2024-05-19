@@ -32,7 +32,7 @@ public class SpawnProjectiles : MonoBehaviour
         GameObject vfx;
 
         if (firePoint != null) {
-            vfx = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.identity);
+            vfx = Instantiate(effectToSpawn, firePoint.transform.position, firePoint.transform.rotation);
         }
         else {
             Debug.Log("No Fire Point");
