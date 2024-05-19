@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("XR Origin (XR Rig)").transform;
         agent = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
         string currentTag = gameObject.tag;
@@ -93,7 +93,6 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         STATUS();
-        // this character status
         if (status.ContainsValue(true))
         {
             int status_name = 0;
@@ -152,7 +151,6 @@ public class EnemyAI : MonoBehaviour
             status[Damaged] = false;
     }
 
-    // dissolve shading
     private void Dissolve()
     {
         Dissolve_value -= Time.deltaTime;
@@ -192,12 +190,14 @@ public class EnemyAI : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
+    
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
         Anim.Play(MoveState);
         transform.LookAt(player);
     }
+    
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
@@ -230,11 +230,11 @@ public class EnemyAI : MonoBehaviour
         rb.AddForce(transform.forward * 4f, ForceMode.Impulse);
         rb.AddForce(transform.up * 8f, ForceMode.Impulse);
     }
-
     private void ResetAttack()
     {
         alreadyAttacked = false;
     }
+
     public void TakeDamage(int damage)
     {
         Anim.CrossFade(DamagedState, 0.1f, layer, 0);
@@ -254,4 +254,5 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+
 }
