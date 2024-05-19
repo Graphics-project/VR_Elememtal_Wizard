@@ -8,8 +8,9 @@ public class SpawnProjectiles : MonoBehaviour
     public GameObject firePoint;
     public List<GameObject> vfx = new List<GameObject>();
 
-
     private GameObject effectToSpawn;
+    private float timeTofire = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class SpawnProjectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton (0)) {
+        if (Input.GetMouseButton (0) && Time.time >= timeTofire) {
+            timeTofire = Time.time + 1 / effectToSpawn.GetComponent<ProjectileMove>().fireRate;
             SpawnVFX();
         }
     }
@@ -33,7 +35,7 @@ public class SpawnProjectiles : MonoBehaviour
             vfx = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.identity);
         }
         else {
-            Debug.log("No Fire Point")
+            Debug.Log("No Fire Point");
         }
     }
 }
