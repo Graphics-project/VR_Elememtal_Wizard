@@ -41,11 +41,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _NormalStrenth: 0
+    - _FresnelPower: 10
+    - _Metalic: 0
+    - _NoiseDissolve: 3
+    - _NoiseScale: 25
+    - _NormalStrenth: 0.9
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Smoothness: 0
+    - _VoronoiDissolve: 5
+    - _VoronoiScale: 4
     m_Colors:
+    - _FresnelColor: {r: 50.716976, g: 19.140305, b: 6.4592385, a: 0}
     - _MainColor: {r: 0.745283, g: 0.58016276, b: 0.4745906, a: 1}
+    - _NoiseSpeed: {r: -0.1, g: 0.1, b: 0, a: 0}
+    - _VoronoiColor: {r: 65.89017, g: 11.300327, b: 2.797223, a: 0}
+    - _VoronoiSpeed: {r: 0.1, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8160287111778640795
 MonoBehaviour:
