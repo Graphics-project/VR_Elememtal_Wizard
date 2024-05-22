@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -8264933962459262660}
   - component: {fileID: 5082525495605885259}
   - component: {fileID: 8503399715339058006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Polyart_Rock
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
