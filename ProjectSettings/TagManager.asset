@@ -7,6 +7,8 @@ TagManager:
   - Ghost
   - Mummy
   - Golem
+  - PlayerProjectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - EnemyBullet
   - 
   - 
   - 
