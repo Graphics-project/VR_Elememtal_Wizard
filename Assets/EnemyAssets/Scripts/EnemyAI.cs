@@ -10,8 +10,10 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public int HP;
 
+
     private Animator Anim;
     private int layer;
+
 
     //Patrolling
     public Vector3 walkPoint;
@@ -28,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange;
     public bool playerInAttackRange;
+    private bool isDamaged;
 
     // Cache hash values
     private int MoveState;
@@ -40,19 +43,19 @@ public class EnemyAI : MonoBehaviour
     // dissolve
     [SerializeField] private SkinnedMeshRenderer[] MeshR;
     private float Dissolve_value = 1;
-    private bool DissolveFlg = false;
+    //private bool DissolveFlg = false;
 
 
     private const int Die = 0;
     private const int Move = 1;
     private const int Attack = 2;
     private const int Damaged = 3;
-    private Dictionary<int, bool> status = new Dictionary<int, bool>
+    public Dictionary<int, bool> status = new Dictionary<int, bool>
     {
         {Die, false },
-        {Move, false },
-        {Attack, false },
         {Damaged, false },
+        {Move, false },
+        {Attack, false }
     };
 
     private void Awake()
@@ -77,6 +80,7 @@ public class EnemyAI : MonoBehaviour
             layer = 1;
             Anim.SetLayerWeight(1, 1);
             MoveState = Animator.StringToHash("Mummy Layer.Move");
+            DamagedState = 0;
         }
         else if (currentTag == "Golem")
         {
@@ -88,6 +92,15 @@ public class EnemyAI : MonoBehaviour
             AttackState2 = Animator.StringToHash("Golem Layer.Attack02");
             DissolveState = Animator.StringToHash("Golem Layer.Die");
         }
+    }
+
+
+    public bool setDamageState()
+    {
+        if (status[Damaged] == false)
+            isDamaged = true;
+
+        return isDamaged;
     }
 
     private void Update()
@@ -105,12 +118,17 @@ public class EnemyAI : MonoBehaviour
 
             if (status_name == Die)
                 Dissolve();
+            else if (status_name == Damaged)
+            {
+                TakeDamage(1);
+                isDamaged = false;
+            }
             else if (status_name == Move)
                 ChasePlayer();
             else if (status_name == Attack)
                 AttackPlayer();
-            else if (status_name == Damaged)
-                TakeDamage(1);
+
+
         }
     }
 
@@ -121,10 +139,10 @@ public class EnemyAI : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         // during die
-        if (DissolveFlg && HP <= 0)
+        if (HP <= 0)
             status[Die] = true;
-        else if (!DissolveFlg)
-            status[Die] = false;
+        //else if (!DissolveFlg)
+        //    status[Die] = false;
 
         // during moving & attacking
         if ((playerInSightRange && playerInAttackRange))
@@ -145,14 +163,17 @@ public class EnemyAI : MonoBehaviour
         }
 
         // during damaging
-        if (Anim.GetCurrentAnimatorStateInfo(layer).fullPathHash == DamagedState)
+        if (isDamaged)
             status[Damaged] = true;
-        else if (Anim.GetCurrentAnimatorStateInfo(layer).fullPathHash != DamagedState)
+        else if (!isDamaged)
             status[Damaged] = false;
+        //else if (Anim.GetCurrentAnimatorStateInfo(layer).fullPathHash != DamagedState)
+        //status[Damaged] = false;
     }
 
     private void Dissolve()
     {
+
         Dissolve_value -= Time.deltaTime;
         for (int i = 0; i < MeshR.Length; i++)
         {
@@ -190,14 +211,14 @@ public class EnemyAI : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
-    
+
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
         Anim.Play(MoveState);
         transform.LookAt(player);
     }
-    
+
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
@@ -208,11 +229,11 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             //Attack code here
-            if (layer == 2 && Physics.CheckSphere(transform.position, attackRange/2, whatIsPlayer))
+            if (layer == 2 && Physics.CheckSphere(transform.position, attackRange / 2, whatIsPlayer))
             {
                 Anim.CrossFade(AttackState2, 0.15f, layer, 0.3f);
                 Instantiate(projectile2);
-            }         
+            }
             else
             {
                 Anim.CrossFade(AttackState, 0.15f, layer, 0.3f);
@@ -238,13 +259,19 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Anim.CrossFade(DamagedState, 0.1f, layer, 0);
+        //rigidbody.AddForce(transform.forward * -2f, ForceMode.Impulse);
         HP -= damage;
-        //if (HP <= 0) Dissolve(); // Invoke(nameof(DestroyEnemy), 0.5f);
+        if (HP <= 0)
+        {
+            //Dissolve();
+            status[Die] = true;
+            //DissolveFlg = true;
+        }
     }
     private void DestroyEnemy()
     {
-        Destroy(gameObject);
-        Destroy(projectile);
+        DestroyImmediate(gameObject, true);
+        DestroyImmediate(projectile, true);
     }
 
     private void OnDrawGizmosSelected()
