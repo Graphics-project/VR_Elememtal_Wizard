@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Transform[] spawnPoint;
-    public Transform pool;
+    Transform pool;
     
     int enemyNum;
     int enemyMax;
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     {
         timer += Time.deltaTime;
         level = GameManager.instance.level;
-        enemyNum = GameManager.instance.currentEnemyNum;
+        enemyNum = GameManager.instance.getCurrentEnemyNum();
 
         if (level == 0)
         {
@@ -52,6 +52,6 @@ public class Spawner : MonoBehaviour
     {
         GameObject enemy = GameManager.instance.pool.Get(Random.Range(0, 2));
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
-        GameManager.instance.currentEnemyNum++;
+        GameManager.instance.incCurrentEnemyNum();
     }
 }

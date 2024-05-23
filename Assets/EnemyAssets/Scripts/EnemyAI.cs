@@ -279,7 +279,7 @@ public class EnemyAI : MonoBehaviour
         //DestroyImmediate(projectile, true);
         //gameObject.SetActive(false);
         Destroy(gameObject);
-        GameManager.instance.currentEnemyNum--;
+        GameManager.instance.decCurrentEnemyNum();
     }
 
     private void OnDrawGizmosSelected()
