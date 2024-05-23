@@ -8,6 +8,7 @@ public class SpawnMeteors : MonoBehaviour
     public Transform startPoint;
     public Transform endPoint;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,16 @@ public class SpawnMeteors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            var startPos = startPoint.position;
+
+            GameObject objVFX = Instantiate(vfx, startPos, Quaternion.identity) as GameObject;
+
+            var endPos = endPoint.position;
+
+            RotateTo(objVFX, endPos);
+        }
     }
     
     void RotateTo(GameObject obj, Vector3 destination)
