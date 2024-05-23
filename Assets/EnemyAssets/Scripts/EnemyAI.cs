@@ -58,13 +58,17 @@ public class EnemyAI : MonoBehaviour
         {Attack, false }
     };
 
+    void OnEnabe()
+    {
+        player = GameManager.instance.player.GetComponent<Rigidbody>().transform;        
+    }
+
     private void Awake()
     {
-        player = GameObject.Find("XR Origin (XR Rig)").transform;
+        //player = GameObject.Find("XR Origin (XR Rig)").transform;
         agent = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
         string currentTag = gameObject.tag;
-
 
         if (currentTag == "Ghost")
         {
