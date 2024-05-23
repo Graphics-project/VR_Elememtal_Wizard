@@ -8,10 +8,9 @@ public class GameManager : MonoBehaviour
     public PlayerScript player;
     public Spawner spawner;
     public PoolManager pool;
-    public EnemyAI enemy;
 
     public int level = 0;
-
+    public int currentEnemyNum = 0;
 
     private void Awake()
     {
@@ -25,4 +24,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+
 }

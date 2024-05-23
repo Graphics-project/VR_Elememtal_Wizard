@@ -121,6 +121,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46f311046d2104da8b56be3d0a49a119, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46f311046d2104da8b56be3d0a49a119, type: 3}
       propertyPath: m_TagString
       value: Ghost
       objectReference: {fileID: 0}
@@ -219,7 +223,7 @@ MonoBehaviour:
   walkPointRange: 0
   timeBetweenAttacks: 2
   projectile: {fileID: 6278275980963150991, guid: b1276dea29c63284d90dda1502156b0e, type: 3}
-  projectile2: {fileID: 6278275980963150991, guid: bdd3b66fac9f0cf4891bb0cf56a19cac, type: 3}
+  projectile2: {fileID: 0}
   sightRange: 15
   attackRange: 3
   playerInSightRange: 0
@@ -271,7 +275,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0

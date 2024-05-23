@@ -58,9 +58,9 @@ public class EnemyAI : MonoBehaviour
         {Attack, false }
     };
 
-    void OnEnabe()
+    void OnEnable()
     {
-        player = GameManager.instance.player.GetComponent<Rigidbody>().transform;        
+        player = GameManager.instance.player.GetComponent<Transform>();         
     }
 
     private void Awake()
@@ -250,10 +250,11 @@ public class EnemyAI : MonoBehaviour
     }
     private void InstantiateProjectile(GameObject projectile)
     {
+        
         Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-        rb.AddForce(transform.forward * 4f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+        rb.AddForce(transform.forward * 2.5f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 4f, ForceMode.Impulse);
     }
     private void ResetAttack()
     {
@@ -274,8 +275,11 @@ public class EnemyAI : MonoBehaviour
     }
     private void DestroyEnemy()
     {
-        DestroyImmediate(gameObject, true);
-        DestroyImmediate(projectile, true);
+        //DestroyImmediate(gameObject, true);
+        //DestroyImmediate(projectile, true);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
+        GameManager.instance.currentEnemyNum--;
     }
 
     private void OnDrawGizmosSelected()

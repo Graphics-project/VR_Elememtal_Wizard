@@ -8,16 +8,6 @@ public class Bullet : MonoBehaviour
     private Collider bulletCollider;
     // Start is called before the first frame update
 
-    void Awake()
-    {
-        //bulletCollider = GetComponent<Collider>();
-        //bulletCollider.enabled = false;
-        //Invoke("EnableCollider", 0.1f);
-    }
-    void EnableCollider()
-    {
-        //bulletCollider.enabled = true;
-    }
     void Start()
     {
         BulletRigidbody = GetComponent<Rigidbody>();
@@ -38,10 +28,5 @@ public class Bullet : MonoBehaviour
         {
             target.setDamageState();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
