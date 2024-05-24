@@ -169,11 +169,11 @@ public class SkillManager : MonoBehaviour
     {
         if (elementType == 0)
         {
-            Vector3 startPos = player.transform.position + meteor_startPos_offset;
+            Vector3 startPos = player.transform.TransformPoint(meteor_startPos_offset);
 
             GameObject objVFX = Instantiate(skillToSpawn, startPos, Quaternion.identity);
 
-            Vector3 endPos = player.transform.position + meteor_lastPos_offset;
+            Vector3 endPos = player.transform.TransformPoint(meteor_lastPos_offset);
 
             RotateTo(objVFX, endPos);
         }
