@@ -28,17 +28,17 @@ public class Spawner : MonoBehaviour
         if (level == 0)
         {
             spawnTime = 1f;
-            enemyMax = 5;
+            enemyMax = 10;
         }
         else if (level == 1)
         {
             spawnTime = 0.5f;
-            enemyMax = 10;
+            enemyMax = 40;
         }
         else
         {
             spawnTime = 0.25f;
-            enemyMax = 15;
+            enemyMax = 60;
         }
 
         if (timer > spawnTime && enemyMax > enemyNum)

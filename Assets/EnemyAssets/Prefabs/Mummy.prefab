@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 51d854d4618016c46bbc70cbb6727225, type: 2}
+      objectReference: {fileID: 9100000, guid: 612cb97448df8df4598ac63fc5a7721f, type: 2}
     - target: {fileID: 13700000, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -271,13 +271,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   HP: 3
+  offset: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   timeBetweenAttacks: 2
   projectile: {fileID: 6278275980963150991, guid: bdd3b66fac9f0cf4891bb0cf56a19cac, type: 3}
   projectile2: {fileID: 0}
   sightRange: 15
-  attackRange: 0.7
+  attackRange: 1
   playerInSightRange: 1
   playerInAttackRange: 0
   MeshR:
