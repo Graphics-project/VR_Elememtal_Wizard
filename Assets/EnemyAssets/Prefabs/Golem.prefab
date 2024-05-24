@@ -352,8 +352,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1024790831}
   - {fileID: 1423454223}
@@ -369,7 +369,7 @@ Animator:
   m_GameObject: {fileID: 1077356408}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0f2c5202b918687408ac5bc7429a03ea, type: 3}
-  m_Controller: {fileID: 9100000, guid: 51d854d4618016c46bbc70cbb6727225, type: 2}
+  m_Controller: {fileID: 9100000, guid: ad5982b148467014cae4710eaa5b91c5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -401,6 +401,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   HP: 3
+  offset: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   timeBetweenAttacks: 3
@@ -420,7 +421,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077356408}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8

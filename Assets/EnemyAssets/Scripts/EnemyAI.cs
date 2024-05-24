@@ -30,8 +30,6 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange;
     public bool playerInAttackRange;
-    private bool isDamaged;
-    private int damaged;
 
     // Animation hash values
     private int MoveState;
@@ -47,14 +45,13 @@ public class EnemyAI : MonoBehaviour
     private const int Die = 0;
     private const int Move = 1;
     private const int Attack = 2;
-    private const int Damaged = 3;
     public Dictionary<int, bool> status = new Dictionary<int, bool>
     {
         {Die, false },
-        {Damaged, false },
         {Move, false },
         {Attack, false }
     };
+
 
     void OnEnable()
     {
@@ -64,6 +61,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        //if (player == null)
+        //    player = GameManager.instance.player.GetComponent<Transform>();
         //player = GameObject.Find("XR Origin (XR Rig)").transform;
         agent = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
@@ -72,7 +71,6 @@ public class EnemyAI : MonoBehaviour
         if (currentTag == "Ghost")
         {
             layer = 0;
-            Anim.SetLayerWeight(0, 1);
             playerInSightRange = true;
             offset= new Vector3(0, -1.5f, 0);
             MoveState = Animator.StringToHash("Ghost Layer.move");
@@ -83,7 +81,6 @@ public class EnemyAI : MonoBehaviour
         else if (currentTag == "Mummy")
         {
             layer = 1;
-            Anim.SetLayerWeight(1, 1);
             offset = new Vector3(0, -1.5f, 0);
             playerInSightRange = true;
             MoveState = Animator.StringToHash("Mummy Layer.Move");
@@ -92,23 +89,12 @@ public class EnemyAI : MonoBehaviour
         else if (currentTag == "Golem")
         {
             layer = 2;
-            Anim.SetLayerWeight(2, 1);
             MoveState = Animator.StringToHash("Golem Layer.Walk");
             DamagedState = Animator.StringToHash("Golem Layer.GetHit");
             AttackState = Animator.StringToHash("Golem Layer.Attack01");
             AttackState2 = Animator.StringToHash("Golem Layer.Attack02");
             DissolveState = Animator.StringToHash("Golem Layer.Die");
         }
-    }
-
-    public bool setDamageState(int damage)
-    {
-        if (status[Damaged] == false)
-            isDamaged = true;
-
-        damaged = damage;
-
-        return isDamaged;
     }
 
     private void Update()
@@ -123,11 +109,8 @@ public class EnemyAI : MonoBehaviour
                     status_name = i.Key;
                     break;
                 }
-
             if (status_name == Die)
                 Dissolve();
-            else if (status_name == Damaged)
-                TakeDamage(damaged);
             else if (status_name == Move)
                 ChasePlayer();
             else if (status_name == Attack)
@@ -140,7 +123,6 @@ public class EnemyAI : MonoBehaviour
     private void STATUS()
     {
         //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         if (layer==2)
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -167,15 +149,14 @@ public class EnemyAI : MonoBehaviour
         }
 
         // during damaging
-        if (isDamaged)
-            status[Damaged] = true;
-        else if (!isDamaged)
-            status[Damaged] = false;
+        //if (isDamaged)
+        //    status[Damaged] = true;
+        //else if (!isDamaged)
+        //    status[Damaged] = false;
     }
 
     private void Dissolve()
     {
-
         Dissolve_value -= Time.deltaTime;
         for (int i = 0; i < MeshR.Length; i++)
         {
@@ -232,12 +213,12 @@ public class EnemyAI : MonoBehaviour
         {
             if (layer == 2 && Physics.CheckSphere(transform.position, attackRange / 2, whatIsPlayer))
             {
-                Anim.CrossFade(AttackState2, 0.15f, layer, 0.3f);
+                Anim.CrossFade(AttackState2, 0.15f, 0, 0.3f);
                 Instantiate(projectile2);
             }
             else
             {
-                Anim.CrossFade(AttackState, 0.15f, layer, 0.3f);
+                Anim.CrossFade(AttackState, 0.15f, 0, 0.3f);
                 InstantiateProjectile(projectile);
             }
 
@@ -250,24 +231,21 @@ public class EnemyAI : MonoBehaviour
         
         Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-        rb.AddForce(transform.forward * 2.5f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 4f, ForceMode.Impulse);
+        rb.AddForce(transform.forward * 5f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 6f, ForceMode.Impulse);
     }
     private void ResetAttack()
     {
         alreadyAttacked = false;
     }
 
-    private void TakeDamage(int damage)
-    {
-        Anim.CrossFade(DamagedState, 0.1f, layer, 0);
+    public void TakeDamage(int damage)
+    {   
+        Anim.CrossFade(DamagedState, 0.1f, 0, 0.2f);
         //rigidbody.AddForce(transform.forward * -2f, ForceMode.Impulse);
         HP -= damage;
         if (HP <= 0)
             status[Die] = true;
-
-        damaged = 0;
-        status[Damaged] = false;
     }
     public void SlowDown()
     {

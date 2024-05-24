@@ -7,7 +7,12 @@ public class Bullet : MonoBehaviour
     private Rigidbody BulletRigidbody;
     private Collider bulletCollider;
 
-    public int damage;
+    public int deal;
+
+    void Awake()
+    {
+        deal = 1;
+    }
 
     void Start()
     {
@@ -27,11 +32,11 @@ public class Bullet : MonoBehaviour
 
         if (gameObject.tag == "PlayerProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
         {
-            target.setDamageState(damage);
+            target.TakeDamage(deal);
         }
         else if (gameObject.tag == "SlowDownProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
         {
-            target.setDamageState(damage);
+            target.TakeDamage(deal);
             target.SlowDown();
         }
 
