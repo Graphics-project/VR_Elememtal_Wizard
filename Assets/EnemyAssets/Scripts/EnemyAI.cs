@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public int HP;
+    public Vector3 offset;
 
     private Animator Anim;
     private int layer;
@@ -57,7 +58,8 @@ public class EnemyAI : MonoBehaviour
 
     void OnEnable()
     {
-        player = GameManager.instance.player.GetComponent<Transform>();        
+        if (player == null)
+            player = GameManager.instance.player.GetComponent<Transform>();
     }
 
     private void Awake()
@@ -71,6 +73,8 @@ public class EnemyAI : MonoBehaviour
         {
             layer = 0;
             Anim.SetLayerWeight(0, 1);
+            playerInSightRange = true;
+            offset= new Vector3(0, -1.5f, 0);
             MoveState = Animator.StringToHash("Ghost Layer.move");
             DamagedState = Animator.StringToHash("Ghost Layer.damaged");
             AttackState = Animator.StringToHash("Ghost Layer.attack_shift");
@@ -80,6 +84,8 @@ public class EnemyAI : MonoBehaviour
         {
             layer = 1;
             Anim.SetLayerWeight(1, 1);
+            offset = new Vector3(0, -1.5f, 0);
+            playerInSightRange = true;
             MoveState = Animator.StringToHash("Mummy Layer.Move");
             DamagedState = 0;
         }
@@ -135,6 +141,8 @@ public class EnemyAI : MonoBehaviour
     {
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (layer==2)
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         // during die
@@ -208,15 +216,17 @@ public class EnemyAI : MonoBehaviour
     {
         agent.SetDestination(player.position);
         Anim.Play(MoveState);
-        transform.LookAt(player);
+
+        Vector3 lookAtPosition = player.position + offset;
+        transform.LookAt(lookAtPosition);
     }
 
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
+        Vector3 lookAtPosition = player.position + offset;
+        transform.LookAt(lookAtPosition);
 
         if (!alreadyAttacked)
         {
