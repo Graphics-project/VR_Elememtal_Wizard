@@ -257,7 +257,7 @@ public class EnemyAI : MonoBehaviour
         originalAgentSpeed = agent.speed;
         originalAnimatorSpeed = Anim.speed;
 
-        //todo : 2ÃÊ°£ °ø°Ý ºÒ°¡ »óÅÂ ¼³Á¤
+        //todo : 2ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         alreadyAttacked = true;
         agent.speed = 0;
         Anim.speed = 0;
