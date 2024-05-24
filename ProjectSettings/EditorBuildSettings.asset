@@ -15,5 +15,6 @@ EditorBuildSettings:
     path: Assets/LYM/Scenes/1 Start Scene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 918f977c293df1445bf6309d8ebb187b, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 08f48a474e5923a458273f938b432683, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: a038179489769684f8ca84946b67b57c, type: 2}
