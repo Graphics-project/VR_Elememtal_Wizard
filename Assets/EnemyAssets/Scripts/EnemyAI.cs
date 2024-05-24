@@ -5,15 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    // public parameters
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public int HP;
 
-
     private Animator Anim;
     private int layer;
-
 
     //Patrolling
     public Vector3 walkPoint;
@@ -26,25 +25,23 @@ public class EnemyAI : MonoBehaviour
     public GameObject projectile;
     public GameObject projectile2;
 
-    //States
+    //State parameters
     public float sightRange, attackRange;
     public bool playerInSightRange;
     public bool playerInAttackRange;
     private bool isDamaged;
+    private int damaged;
 
-    // Cache hash values
+    // Animation hash values
     private int MoveState;
     private int DamagedState;
     private int AttackState;
     private int AttackState2;
     private int DissolveState;
 
-
     // dissolve
     [SerializeField] private SkinnedMeshRenderer[] MeshR;
     private float Dissolve_value = 1;
-    //private bool DissolveFlg = false;
-
 
     private const int Die = 0;
     private const int Move = 1;
@@ -60,7 +57,6 @@ public class EnemyAI : MonoBehaviour
 
     void OnEnable()
     {
-        //player = GameManager.instance.player.GetComponent<Rigidbody>().transform;
         player = GameManager.instance.player.GetComponent<Transform>();        
     }
 
@@ -99,11 +95,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-
-    public bool setDamageState()
+    public bool setDamageState(int damage)
     {
         if (status[Damaged] == false)
             isDamaged = true;
+
+        damaged = damage;
 
         return isDamaged;
     }
@@ -124,10 +121,7 @@ public class EnemyAI : MonoBehaviour
             if (status_name == Die)
                 Dissolve();
             else if (status_name == Damaged)
-            {
-                TakeDamage(1);
-                isDamaged = false;
-            }
+                TakeDamage(damaged);
             else if (status_name == Move)
                 ChasePlayer();
             else if (status_name == Attack)
@@ -146,8 +140,6 @@ public class EnemyAI : MonoBehaviour
         // during die
         if (HP <= 0)
             status[Die] = true;
-        //else if (!DissolveFlg)
-        //    status[Die] = false;
 
         // during moving & attacking
         if ((playerInSightRange && playerInAttackRange))
@@ -164,7 +156,6 @@ public class EnemyAI : MonoBehaviour
         {
             status[Attack] = false;
             status[Move] = false;
-            //agent.SetDestination(transform.position);
         }
 
         // during damaging
@@ -172,8 +163,6 @@ public class EnemyAI : MonoBehaviour
             status[Damaged] = true;
         else if (!isDamaged)
             status[Damaged] = false;
-        //else if (Anim.GetCurrentAnimatorStateInfo(layer).fullPathHash != DamagedState)
-        //status[Damaged] = false;
     }
 
     private void Dissolve()
@@ -188,8 +177,6 @@ public class EnemyAI : MonoBehaviour
         {
             DestroyEnemy();
         }
-        //Anim.CrossFade(DissolveState, 0.1f, 0, 0);
-        //DissolveFlg = true;
     }
 
     private void Patrolling()
@@ -233,7 +220,6 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            //Attack code here
             if (layer == 2 && Physics.CheckSphere(transform.position, attackRange / 2, whatIsPlayer))
             {
                 Anim.CrossFade(AttackState2, 0.15f, layer, 0.3f);
@@ -262,22 +248,25 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         Anim.CrossFade(DamagedState, 0.1f, layer, 0);
         //rigidbody.AddForce(transform.forward * -2f, ForceMode.Impulse);
         HP -= damage;
         if (HP <= 0)
-        {
-            //Dissolve();
             status[Die] = true;
-            //DissolveFlg = true;
-        }
+
+        damaged = 0;
+        status[Damaged] = false;
     }
+    public void SlowDown()
+    {
+        gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * -2f, ForceMode.Impulse);
+    }
+
     private void DestroyEnemy()
     {
         //DestroyImmediate(gameObject, true);
-        //DestroyImmediate(projectile, true);
         //gameObject.SetActive(false);
         Destroy(gameObject);
         GameManager.instance.decCurrentEnemyNum();
