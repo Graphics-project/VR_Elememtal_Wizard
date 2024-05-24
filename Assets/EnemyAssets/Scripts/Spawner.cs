@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Transform[] spawnPoint;
+    Transform pool;
     
     int enemyNum;
     int enemyMax;
@@ -15,13 +16,14 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
+        pool = GameManager.instance.pool.transform;
     }
 
     void Update()
     {
         timer += Time.deltaTime;
         level = GameManager.instance.level;
-        enemyNum = transform.childCount;
+        enemyNum = GameManager.instance.getCurrentEnemyNum();
 
         if (level == 0)
         {
@@ -38,7 +40,6 @@ public class Spawner : MonoBehaviour
             spawnTime = 0.25f;
             enemyMax = 15;
         }
-            
 
         if (timer > spawnTime && enemyMax > enemyNum)
         {
@@ -51,5 +52,6 @@ public class Spawner : MonoBehaviour
     {
         GameObject enemy = GameManager.instance.pool.Get(Random.Range(0, 2));
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        GameManager.instance.incCurrentEnemyNum();
     }
 }

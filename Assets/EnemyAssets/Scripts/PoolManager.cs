@@ -14,7 +14,6 @@ public class PoolManager : MonoBehaviour
         for (int i=0; i<pools.Length; i++)
         {
             pools[i] = new List<GameObject>();
-
         }
     }
 
@@ -22,15 +21,15 @@ public class PoolManager : MonoBehaviour
     {
         GameObject select = null;
 
-        foreach (GameObject item in pools[index])
-        {
-            if (!item.activeSelf)
-            {
-                select = item;
-                select.SetActive(true);
-                break;
-            }
-        }
+        //foreach (GameObject item in pools[index])
+        //{
+        //    if (!item.activeSelf)
+        //    {
+        //        select = item;
+        //        select.SetActive(true);
+        //        break;
+        //    }
+        //}
 
         if (!select)
         {
