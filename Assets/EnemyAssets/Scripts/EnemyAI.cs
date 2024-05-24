@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
 
     private Animator Anim;
     private int layer;
+    private float originalAgentSpeed;
+    private float originalAnimatorSpeed;
 
     //Patrolling
     public Vector3 walkPoint;
@@ -70,8 +72,6 @@ public class EnemyAI : MonoBehaviour
 
         if (currentTag == "Ghost")
         {
-            layer = 0;
-            playerInSightRange = true;
             offset= new Vector3(0, -1.5f, 0);
             MoveState = Animator.StringToHash("Ghost Layer.move");
             DamagedState = Animator.StringToHash("Ghost Layer.damaged");
@@ -80,15 +80,12 @@ public class EnemyAI : MonoBehaviour
         }
         else if (currentTag == "Mummy")
         {
-            layer = 1;
             offset = new Vector3(0, -1.5f, 0);
-            playerInSightRange = true;
             MoveState = Animator.StringToHash("Mummy Layer.Move");
             DamagedState = 0;
         }
         else if (currentTag == "Golem")
         {
-            layer = 2;
             MoveState = Animator.StringToHash("Golem Layer.Walk");
             DamagedState = Animator.StringToHash("Golem Layer.GetHit");
             AttackState = Animator.StringToHash("Golem Layer.Attack01");
@@ -123,8 +120,8 @@ public class EnemyAI : MonoBehaviour
     private void STATUS()
     {
         //Check for sight and attack range
-        if (layer==2)
-            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (gameObject.tag == "Golem") playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        else playerInSightRange = true;
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         // during die
@@ -163,9 +160,7 @@ public class EnemyAI : MonoBehaviour
             MeshR[i].material.SetFloat("_Dissolve", Dissolve_value);
         }
         if (Dissolve_value <= 0)
-        {
             DestroyEnemy();
-        }
     }
 
     private void Patrolling()
@@ -211,7 +206,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            if (layer == 2 && Physics.CheckSphere(transform.position, attackRange / 2, whatIsPlayer))
+            if (projectile2 != null && Physics.CheckSphere(transform.position, attackRange / 2, whatIsPlayer))
             {
                 Anim.CrossFade(AttackState2, 0.15f, 0, 0.3f);
                 Instantiate(projectile2);
@@ -249,8 +244,37 @@ public class EnemyAI : MonoBehaviour
     }
     public void SlowDown()
     {
-        gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * -2f, ForceMode.Impulse);
+        originalAgentSpeed = agent.speed;
+        originalAnimatorSpeed = Anim.speed;
+
+        agent.speed = agent.speed / 2f > 0.5f ? agent.speed / 2f : 0.5f;
+        Anim.speed = originalAnimatorSpeed / 2f;
+
+        Invoke(nameof(ResetSpeedAndAnimation), 2f);
     }
+    public void Stunned()
+    {
+        originalAgentSpeed = agent.speed;
+        originalAnimatorSpeed = Anim.speed;
+
+        //todo : 2초간 공격 불가 상태 설정
+        alreadyAttacked = true;
+        agent.speed = 0;
+        Anim.speed = 0;
+
+        Invoke(nameof(ResetSpeedAnimAttack), 2f);
+    }
+    private void ResetSpeedAndAnimation()
+    {
+        agent.speed = originalAgentSpeed;
+        Anim.speed = originalAnimatorSpeed;
+    }
+    private void ResetSpeedAnimAttack()
+    {
+        ResetSpeedAndAnimation();
+        alreadyAttacked = false;
+    }
+
 
     private void DestroyEnemy()
     {
