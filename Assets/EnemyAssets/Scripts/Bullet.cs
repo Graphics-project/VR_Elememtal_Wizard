@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody BulletRigidbody;
     private Collider bulletCollider;
-    // Start is called before the first frame update
 
     void Start()
     {
@@ -15,23 +14,6 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        EnemyAI target = other.GetComponent<EnemyAI>();
-        //PlayerController player = other.GetComponent<PlayerController>();
-
-        if (gameObject.tag == "EnemyProjectile" && other.tag == "player")
-        {
-            //player.setDamageState();
-        }
-
-        if (gameObject.tag == "PlayerProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
-        {
-            target.setDamageState();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         EnemyAI target = other.GetComponent<EnemyAI>();
         //PlayerController player = other.GetComponent<PlayerController>();

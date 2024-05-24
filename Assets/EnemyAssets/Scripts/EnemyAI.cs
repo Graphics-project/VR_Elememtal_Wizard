@@ -58,10 +58,10 @@ public class EnemyAI : MonoBehaviour
         {Attack, false }
     };
 
-    void OnEnabe()
+    void OnEnable()
     {
-        player = GameManager.instance.player.GetComponent<Rigidbody>().transform;
-        //player = GameManager.instance.player.GetComponent<Transform>();        
+        //player = GameManager.instance.player.GetComponent<Rigidbody>().transform;
+        player = GameManager.instance.player.GetComponent<Transform>();        
     }
 
     private void Awake()

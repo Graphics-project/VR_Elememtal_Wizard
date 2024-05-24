@@ -742,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a9ce1ca53d89940a374a82a9636bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6228382610831465021}
+  player: {fileID: 5376551681694759899}
   spawner: {fileID: 1199846669}
   pool: {fileID: 1497800341}
   level: 0
@@ -1235,7 +1235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: []
-  pool: {fileID: 0}
 --- !u!4 &1199846670
 Transform:
   m_ObjectHideFlags: 0
