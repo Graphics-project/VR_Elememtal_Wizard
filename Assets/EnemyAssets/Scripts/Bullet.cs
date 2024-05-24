@@ -34,10 +34,15 @@ public class Bullet : MonoBehaviour
         {
             target.TakeDamage(deal);
         }
-        else if (gameObject.tag == "SlowDownProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
+        else if (gameObject.tag == "SlowProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
         {
             target.TakeDamage(deal);
             target.SlowDown();
+        }
+        else if (gameObject.tag == "StunProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
+        {
+            target.TakeDamage(deal);
+            target.Stunned();
         }
 
     }

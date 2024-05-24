@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15143298}
   - component: {fileID: 15143299}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 42506870}
   - component: {fileID: 42506869}
   - component: {fileID: 42506868}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill1 mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 44872574}
   - component: {fileID: 44872573}
   - component: {fileID: 44872572}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill4 mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 112498298}
   - component: {fileID: 112498300}
   - component: {fileID: 112498299}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Back fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: 146304064}
   - component: {fileID: 146304066}
   - component: {fileID: 146304065}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill2 cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 244577190}
   - component: {fileID: 244577192}
   - component: {fileID: 244577191}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1250,7 +1250,7 @@ GameObject:
   - component: {fileID: 283935441}
   - component: {fileID: 283935440}
   - component: {fileID: 283935439}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1472,7 +1472,7 @@ GameObject:
   - component: {fileID: 293131495}
   - component: {fileID: 293131494}
   - component: {fileID: 293131493}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14148,7 +14148,7 @@ GameObject:
   - component: {fileID: 515033722}
   - component: {fileID: 515033724}
   - component: {fileID: 515033723}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill1 cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14648,7 +14648,7 @@ GameObject:
   - component: {fileID: 583163135}
   - component: {fileID: 583163137}
   - component: {fileID: 583163136}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14923,7 +14923,7 @@ GameObject:
   - component: {fileID: 768043885}
   - component: {fileID: 768043884}
   - component: {fileID: 768043883}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15057,7 +15057,7 @@ GameObject:
   - component: {fileID: 769535272}
   - component: {fileID: 769535274}
   - component: {fileID: 769535273}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15134,7 +15134,7 @@ GameObject:
   - component: {fileID: 807768155}
   - component: {fileID: 807768154}
   - component: {fileID: 807768153}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill3 mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15279,7 +15279,7 @@ GameObject:
   - component: {fileID: 879758316}
   - component: {fileID: 879758318}
   - component: {fileID: 879758317}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill2 img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15354,7 +15354,7 @@ GameObject:
   - component: {fileID: 907276297}
   - component: {fileID: 907276299}
   - component: {fileID: 907276298}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill1 img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15434,7 +15434,7 @@ GameObject:
   - component: {fileID: 935418615}
   - component: {fileID: 935418617}
   - component: {fileID: 935418616}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill4 img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15590,7 +15590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 952919337}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15628,7 +15628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 954512211}
   - component: {fileID: 954512212}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill Projectiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24086,7 +24086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1083125625}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fire point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24118,7 +24118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1115249361}
   - component: {fileID: 1115249362}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SKILLs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24243,7 +24243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1186836379}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24459,7 +24459,7 @@ GameObject:
   - component: {fileID: 1327664627}
   - component: {fileID: 1327664629}
   - component: {fileID: 1327664628}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill4 cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32871,25 +32871,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8932387122589965566, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
-      propertyPath: HP
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8932387122589965566, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 543739629}
-    - target: {fileID: 8932387122589965566, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
-      propertyPath: sightRange
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8932387122589965566, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
-      propertyPath: attackRange
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8932387122589965566, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
-      propertyPath: walkPointRange
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -41030,7 +41014,7 @@ GameObject:
   - component: {fileID: 1731360624}
   - component: {fileID: 1731360626}
   - component: {fileID: 1731360625}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41226,7 +41210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1790759316}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41353,7 +41337,7 @@ GameObject:
   - component: {fileID: 1807970600}
   - component: {fileID: 1807970602}
   - component: {fileID: 1807970601}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41691,7 +41675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1831681441}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42300,7 +42284,7 @@ GameObject:
   - component: {fileID: 1897311489}
   - component: {fileID: 1897311488}
   - component: {fileID: 1897311487}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill2 mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42629,7 +42613,7 @@ GameObject:
   - component: {fileID: 1985033554}
   - component: {fileID: 1985033553}
   - component: {fileID: 1985033552}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42763,7 +42747,7 @@ GameObject:
   - component: {fileID: 2008859851}
   - component: {fileID: 2008859853}
   - component: {fileID: 2008859852}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill3 cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42849,7 +42833,7 @@ GameObject:
   - component: {fileID: 2067255963}
   - component: {fileID: 2067255965}
   - component: {fileID: 2067255964}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill3 img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42924,7 +42908,7 @@ GameObject:
   - component: {fileID: 2125066522}
   - component: {fileID: 2125066524}
   - component: {fileID: 2125066523}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Health bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
