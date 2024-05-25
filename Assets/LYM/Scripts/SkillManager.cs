@@ -139,18 +139,18 @@ public class SkillManager : MonoBehaviour
     void skillUse()
     {
 
-        // Basic Skill(skill 1)
+        // Basic Skill(skill 0)
         if (skillNum == 0)
         {
             BasicSkill();
         }
 
-        // Epic SKill(skill 2)
+        // Epic SKill1(skill 1)
         if (skillNum == 1)
         {
             if (elementType == 0)
             {
-                // ice lance
+                // fire breath
                 SpawnSimpleSkills(fireBreath_startPos_offset, fireBreath_rotation_offset);
             }
             else if (elementType == 1)
@@ -162,9 +162,8 @@ public class SkillManager : MonoBehaviour
             {
 
             }
-        } 
-
-        // Ultimate Skill(skill 3)
+        }
+        // Epic SKill1(skill 2)
         if (skillNum == 2)
         {
             if (elementType == 0)
@@ -180,8 +179,8 @@ public class SkillManager : MonoBehaviour
             {
 
             }
-        } 
-
+        }
+        // Ultimate Skill(skill 3)
         if (skillNum == 3)
         {
             if (elementType == 0)
