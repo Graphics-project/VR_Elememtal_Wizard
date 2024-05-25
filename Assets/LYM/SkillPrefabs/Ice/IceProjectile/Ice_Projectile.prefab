@@ -51,8 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   fireRate: 4
-  muzzlePrefab: {fileID: 7627634378331735023, guid: 4b28cb502e532e143ab673db14dc3ec2, type: 3}
-  hitPrefab: {fileID: 2783165899140981778, guid: a31f1d0facae2c046ab587592fe4452b, type: 3}
+  muzzlePrefab: {fileID: 818052090616132991, guid: 670ce50a9b46b014cb01c7ed93ec81bc, type: 3}
+  hitPrefab: {fileID: 4735077417369183017, guid: b778d054f16d439418d2a8a8e8142232, type: 3}
 --- !u!65 &2655977618563148070
 BoxCollider:
   m_ObjectHideFlags: 0

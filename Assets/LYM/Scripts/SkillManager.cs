@@ -34,9 +34,27 @@ public class SkillManager : MonoBehaviour
 
 
 
-    // skill variables 
+    // skill variables (offset)
+
+    // Fire
+    private Vector3 fireBreath_startPos_offset = new Vector3(0, 0, 5);
+    private Quaternion fireBreath_rotation_offset = Quaternion.identity;
+
+    private Vector3 fireTornado_startPos_offset = new Vector3(0, 0, 10);
+    private Quaternion fireTornado_rotation_offset = Quaternion.Euler(0, -90, 0);
+
     private Vector3 meteor_startPos_offset = new Vector3(0, 30, 0);
-    private Quaternion meteor_rotation_offset =  Quaternion.Euler(60, 0, 0);
+    private Quaternion meteor_rotation_offset = Quaternion.Euler(60, 0, 0);
+
+
+
+    // Ice
+    private Vector3 iceLance_startPos_offset = new Vector3(0, 10, 0);
+    private Quaternion iceLance_rotation_offset = Quaternion.Euler(45, 0, 0);
+
+
+    // Earth
+
 
 
     // Start is called before the first frame update
@@ -132,11 +150,13 @@ public class SkillManager : MonoBehaviour
         {
             if (elementType == 0)
             {
-
+                // ice lance
+                SpawnSimpleSkills(fireBreath_startPos_offset, fireBreath_rotation_offset);
             }
             else if (elementType == 1)
             {
-
+                // ice lance
+                SpawnSimpleSkills(iceLance_startPos_offset, iceLance_rotation_offset);
             }
             else if (elementType == 2)
             {
@@ -149,7 +169,8 @@ public class SkillManager : MonoBehaviour
         {
             if (elementType == 0)
             {
-
+                // Fire Tornado
+                SpawnSimpleSkills(fireTornado_startPos_offset, fireTornado_rotation_offset);
             }
             else if (elementType == 1)
             {
@@ -161,6 +182,22 @@ public class SkillManager : MonoBehaviour
             }
         } 
 
+        if (skillNum == 3)
+        {
+            if (elementType == 0)
+            {
+                // Meteor
+                SpawnSimpleSkills(meteor_startPos_offset, meteor_rotation_offset);
+            }
+            else if (elementType == 1)
+            {
+
+            }
+            else if (elementType == 2)
+            {
+
+            }
+        }
     }
 
 
@@ -179,31 +216,34 @@ public class SkillManager : MonoBehaviour
         {
             Debug.Log("No Fire Point");
         }
-
     }
 
     // -------------------------------------------
-    //  [2nd skill]
-    //  SecondSkill()
+    //  SpawnSimpleSkills()
     // -------------------------------------------
-    void SpawnMeteor()
+    void SpawnSimpleSkills(Vector3 startPos_offset, Quaternion startRotate_offest)
     {
-        Vector3 startPos = player.transform.TransformPoint(meteor_startPos_offset);
+        Vector3 startPos = player.transform.TransformPoint(startPos_offset);
         Vector3 forwardDirection = player.transform.forward;
         forwardDirection.y = 0;
         forwardDirection.Normalize(); 
 
-        Quaternion meteorAngle = Quaternion.LookRotation(forwardDirection) * meteor_rotation_offset;
-        GameObject objVFX = Instantiate(skillToSpawn, startPos, meteorAngle);
-
+        Quaternion startRotate = Quaternion.LookRotation(forwardDirection) * startRotate_offest;
+        Instantiate(skillToSpawn, startPos, startRotate);
     }
 
 
-    // -------------------------------------------
-    //  spawnProjectile()
-    // -------------------------------------------
-    
 
+    // -------------------------------------------
+    //  SpawnSimpleSkills2()
+    // -------------------------------------------
+    //void SpawnSimpleSkills2(Vector3 startPos_offset, Quaternion startRotate_offest)
+    //{
+    //    Vector3 startPos = player.transform.TransformPoint(startPos_offset);
+    //    Quaternion startRotate = startRotate_offest;
+
+    //    Instantiate(skillToSpawn, startPos, startRotate);
+    //}
 
 
 
