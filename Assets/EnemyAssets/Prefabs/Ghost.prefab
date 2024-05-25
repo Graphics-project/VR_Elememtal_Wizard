@@ -225,7 +225,7 @@ MonoBehaviour:
   projectile: {fileID: 6278275980963150991, guid: b1276dea29c63284d90dda1502156b0e, type: 3}
   projectile2: {fileID: 0}
   sightRange: 15
-  attackRange: 3
+  attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
   MeshR:

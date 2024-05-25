@@ -7,6 +7,13 @@ public class Bullet : MonoBehaviour
     private Rigidbody BulletRigidbody;
     private Collider bulletCollider;
 
+    public int deal;
+
+    void Awake()
+    {
+        deal = 1;
+    }
+
     void Start()
     {
         BulletRigidbody = GetComponent<Rigidbody>();
@@ -25,7 +32,18 @@ public class Bullet : MonoBehaviour
 
         if (gameObject.tag == "PlayerProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
         {
-            target.setDamageState();
+            target.TakeDamage(deal);
         }
+        else if (gameObject.tag == "SlowProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
+        {
+            target.TakeDamage(deal);
+            target.SlowDown();
+        }
+        else if (gameObject.tag == "StunProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))
+        {
+            target.TakeDamage(deal);
+            target.Stunned();
+        }
+
     }
 }
