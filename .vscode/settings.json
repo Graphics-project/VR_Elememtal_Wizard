@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "VR_Elemental_Wizard.sln"
+    "dotnet.defaultSolution": "VR_Elememtal_Wizard.sln"
 }
