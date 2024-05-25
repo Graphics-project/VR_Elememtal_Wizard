@@ -29,15 +29,14 @@ public class SkillManager : MonoBehaviour
     private int skillNum = 0;
 
 
-
+    
 
 
 
 
     // skill variables 
-    private Vector3 meteor_startPos_offset = new Vector3(0, 20, 0);
-    private Vector3 meteor_lastPos_offset = new Vector3(0, -2, 10);
-
+    private Vector3 meteor_startPos_offset = new Vector3(0, 30, 0);
+    private Quaternion meteor_rotation_offset =  Quaternion.Euler(60, 0, 0);
 
 
     // Start is called before the first frame update
@@ -81,6 +80,7 @@ public class SkillManager : MonoBehaviour
         {
             currentSkills = earthSkills;
         }
+
     }
 
 
@@ -91,22 +91,22 @@ public class SkillManager : MonoBehaviour
     // -------------------------------------------
     void skillSelect()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             skillNum = 0;
             skillSign = true;
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             skillNum = 1;
             skillSign = true;
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             skillNum = 2;
             skillSign = true;
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             skillNum = 3;
             skillSign = true;
@@ -130,21 +130,42 @@ public class SkillManager : MonoBehaviour
         // Epic SKill(skill 2)
         if (skillNum == 1)
         {
-            EpicSkill();
-        }
+            if (elementType == 0)
+            {
+
+            }
+            else if (elementType == 1)
+            {
+
+            }
+            else if (elementType == 2)
+            {
+
+            }
+        } 
 
         // Ultimate Skill(skill 3)
-        if (elementType == 2)
+        if (skillNum == 2)
         {
+            if (elementType == 0)
+            {
 
-        }
+            }
+            else if (elementType == 1)
+            {
+
+            }
+            else if (elementType == 2)
+            {
+
+            }
+        } 
 
     }
 
 
 
     // -------------------------------------------
-    //  [1st skill]
     //  BasicSkill()
     // -------------------------------------------
     void BasicSkill()
@@ -163,35 +184,27 @@ public class SkillManager : MonoBehaviour
 
     // -------------------------------------------
     //  [2nd skill]
-    //  EpicSkill()
+    //  SecondSkill()
     // -------------------------------------------
-    void EpicSkill()
+    void SpawnMeteor()
     {
-        if (elementType == 0)
-        {
-            Vector3 startPos = player.transform.TransformPoint(meteor_startPos_offset);
+        Vector3 startPos = player.transform.TransformPoint(meteor_startPos_offset);
+        Vector3 forwardDirection = player.transform.forward;
+        forwardDirection.y = 0;
+        forwardDirection.Normalize(); 
 
-            GameObject objVFX = Instantiate(skillToSpawn, startPos, Quaternion.identity);
+        Quaternion meteorAngle = Quaternion.LookRotation(forwardDirection) * meteor_rotation_offset;
+        GameObject objVFX = Instantiate(skillToSpawn, startPos, meteorAngle);
 
-            Vector3 endPos = player.transform.TransformPoint(meteor_lastPos_offset);
-
-            RotateTo(objVFX, endPos);
-        }
     }
 
 
     // -------------------------------------------
-    //  [3rd skill]
     //  spawnProjectile()
     // -------------------------------------------
     
 
 
 
-    void RotateTo(GameObject obj, Vector3 destination)
-    {
-        var direction = destination - obj.transform.position;
-        var rotation = Quaternion.LookRotation(direction);
-        obj.transform.localRotation = Quaternion.Lerp(obj.transform.rotation, rotation, 1);
-    }
+
 }
