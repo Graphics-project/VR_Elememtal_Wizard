@@ -16,7 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: c55b9f6bb5083c04a8764c90f2d7beaf
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: a2b4b4444e5f26344bb72d78c87caeeb
+    m_Address: Assets/LYM/SkillPrefabs/Fire/Meteor/vfx_MeteorGround.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1f2387cf190a95d4cb94a205605f2c73, type: 2}
   m_SchemaSet:

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9052047488123668503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4585838972442850486}
+  - component: {fileID: 2461388391763671889}
+  m_Layer: 0
+  m_Name: Skill Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4585838972442850486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052047488123668503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2461388391763671889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9052047488123668503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaaf8d4687237b44db3775c1591e633b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 0}
+  player: {fileID: 0}
+  fireSkills:
+  - {fileID: 1205959874057735137, guid: c8c67bd74fbbef4488f8cb20e7df2aef, type: 3}
+  - {fileID: 8420232139562643333, guid: bb1a5e67fd1edd0459109ca51ec3d6f4, type: 3}
+  - {fileID: 4727208118762712737, guid: ac0764f57bb3af346b7b1e606c875d14, type: 3}
+  - {fileID: 7899258130796192533, guid: a5d54367372e16b4ebe30dafb4bb8994, type: 3}
+  iceSkills:
+  - {fileID: 5667315269875715710, guid: 21fdcf10325f40948a5440557cd84241, type: 3}
+  - {fileID: 3114920915125092250, guid: 969c7402526fc744d96c8d1c64c1b76c, type: 3}
+  earthSkills:
+  - {fileID: 1205959874057735137, guid: 93505cc5b20b9114181124775c2c3015, type: 3}
+  - {fileID: 4447171060469134481, guid: e02a6ef98f25b084883db4279df6861a, type: 3}
+  - {fileID: 5413698069371683259, guid: 10aff2f2f90bc924ea96aa107ac1eb63, type: 3}
