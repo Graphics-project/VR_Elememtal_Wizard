@@ -275,7 +275,7 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    private void DestroyEnemy()
+    public void DestroyEnemy()
     {
         //DestroyImmediate(gameObject, true);
         //gameObject.SetActive(false);

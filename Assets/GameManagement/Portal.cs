@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && targetLocation != null)
         {
             other.transform.position = targetLocation.position;
             GameManager.instance.setLevel(levelToLoad);

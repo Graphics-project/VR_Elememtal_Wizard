@@ -743,10 +743,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5376551681694759899}
-  spawner: {fileID: 1199846669}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
   pool: {fileID: 1497800341}
   level: 0
   currentEnemyNum: 0
+  kills: 0
+  elapsedTime: 0
 --- !u!4 &424258275
 Transform:
   m_ObjectHideFlags: 0

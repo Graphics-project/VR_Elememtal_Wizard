@@ -25,20 +25,15 @@ public class Spawner : MonoBehaviour
         level = GameManager.instance.level;
         enemyNum = GameManager.instance.getCurrentEnemyNum();
 
-        if (level == 0)
+        if (level == 1)
         {
             spawnTime = 1f;
-            enemyMax = 10;
+            enemyMax = 30;
         }
-        else if (level == 1)
+        else if (level == 2)
         {
             spawnTime = 0.5f;
             enemyMax = 40;
-        }
-        else
-        {
-            spawnTime = 0.25f;
-            enemyMax = 60;
         }
 
         if (timer > spawnTime && enemyMax > enemyNum)

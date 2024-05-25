@@ -40,4 +40,17 @@ public class PoolManager : MonoBehaviour
 
         return select;
     }
+
+    public void DestroyAllChildren()
+    {
+        int childCount = transform.childCount;
+
+        for (int i = childCount - 1; i >= 0; i--)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            Destroy(child);
+            GameManager.instance.decCurrentEnemyNum();
+        }
+
+    }
 }

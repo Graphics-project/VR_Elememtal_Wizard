@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject player;
-    public Spawner spawner;
+    public Spawner spawner1;
+    public Spawner spawner2;
     public PoolManager pool;
     //public UIManager uiManager;
 
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         startTime = Time.time;
         isGameActive = true;
+        setLevel(1);
     }
 
     public void GameOver()
@@ -62,6 +64,33 @@ public class GameManager : MonoBehaviour
     public void setLevel(int level)
     {
         this.level = level;
+
+        if (level == 1)
+        {
+            spawner2.gameObject.SetActive(false);
+            spawner1.gameObject.SetActive(true);
+        }
+        else if (level == 2)
+        {
+            spawner1.gameObject.SetActive(false);
+            spawner2.gameObject.SetActive(true);
+        }
+    }
+
+    public void LevelCoroutine()
+    {
+        pool.DestroyAllChildren();
+        StartCoroutine(NextLevelCoroutine());
+    }
+
+    IEnumerator NextLevelCoroutine()
+    {
+        while (currentEnemyNum > 0)
+        {
+            yield return null;
+        }
+
+        setLevel(level + 1);
     }
 
     public int getCurrentEnemyNum()

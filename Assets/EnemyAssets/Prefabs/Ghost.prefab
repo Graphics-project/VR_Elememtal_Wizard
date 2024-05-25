@@ -219,6 +219,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   HP: 3
+  offset: {x: 0, y: 0, z: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   timeBetweenAttacks: 2
