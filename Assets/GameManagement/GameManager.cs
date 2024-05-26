@@ -45,6 +45,19 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             elapsedTime = Time.time - startTime;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isGameActive = false;
+                PauseGame();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isGameActive = true;
+                ResumeGame();
+            }
         }
     }
 
