@@ -35,7 +35,7 @@ public class MeteorMove : MonoBehaviour
 
         if(impactPrefab != null)
         {
-            var impactVFX = Instantiate(impactPrefab, pos, rot);
+            var impactVFX = Instantiate(impactPrefab, pos, rot) as GameObject;
             Destroy(impactVFX, 5);
         }
 
