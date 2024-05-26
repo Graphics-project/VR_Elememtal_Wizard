@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class SkillControl : MonoBehaviour
 {
     public GameObject[] hideSkillButtons;
@@ -12,9 +11,9 @@ public class SkillControl : MonoBehaviour
     public GameObject[] textPros;
     public TextMeshProUGUI[] hideSkillTimeTexts;
 
-    private bool[] isHideSkills = {false, false, false, false};
-    private float[] skillTimes = {1, 1, 1, 1};
-    private float[] getSkillTimes = {0, 0, 0, 0};
+    private bool[] isHideSkills = { false, false, false, false };
+    private float[] skillTimes = { 3, 6, 9, 12 };
+    private float[] getSkillTimes = { 0, 0, 0, 0 };
 
     void Start()
     {
@@ -43,30 +42,23 @@ public class SkillControl : MonoBehaviour
         {
             if (isHideSkills[i])
             {
-                StartCoroutine(SkillTimeChk(i));
+                if (getSkillTimes[i] > 0)
+                {
+                    getSkillTimes[i] -= Time.deltaTime;
+
+                    if (getSkillTimes[i] < 0)
+                    {
+                        getSkillTimes[i] = 0;
+                        isHideSkills[i] = false;
+                        hideSkillButtons[i].SetActive(false);
+                    }
+
+                    hideSkillTimeTexts[i].text = getSkillTimes[i].ToString("00");
+
+                    float time = getSkillTimes[i] / skillTimes[i];
+                    hideSkillImages[i].fillAmount = time;
+                }
             }
-        }    
-    }
-
-    IEnumerator SkillTimeChk(int skillNum)
-    {
-        yield return null;
-
-        if (getSkillTimes[skillNum] > 0)
-        {
-            getSkillTimes[skillNum] -= Time.deltaTime;
-
-            if (getSkillTimes[skillNum] < 0)
-            {
-                getSkillTimes[skillNum] = 0;
-                isHideSkills[skillNum] = false;
-                hideSkillButtons[skillNum].SetActive(false);
-            }
-
-            hideSkillTimeTexts[skillNum].text = getSkillTimes[skillNum].ToString("00");
-
-            float time = getSkillTimes[skillNum] / skillTimes[skillNum];
-            hideSkillImages[skillNum].fillAmount = time;
         }
     }
 }
