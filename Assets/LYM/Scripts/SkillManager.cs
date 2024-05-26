@@ -19,7 +19,7 @@ public class SkillManager : MonoBehaviour
     public int elementType = 0;
 
 
-    private float timeTofire = 0;
+    // private float timeTofire = 0;
 
     private GameObject skillToSpawn;
     private List<GameObject> currentSkills = new List<GameObject>();
@@ -39,13 +39,13 @@ public class SkillManager : MonoBehaviour
 
 
     // Fire
-    private Vector3 fireBreath_startPos_offset = new Vector3(0, 0, 5);
+    private Vector3 fireBreath_startPos_offset = new Vector3(0, 0, 2.5f);
     private Quaternion fireBreath_rotation_offset = Quaternion.identity;
 
-    private Vector3 fireTornado_startPos_offset = new Vector3(0, 0, 10);
+    private Vector3 fireTornado_startPos_offset = new Vector3(0, -0.5f, 10);
     private Quaternion fireTornado_rotation_offset = Quaternion.Euler(0, -90, 0);
 
-    private Vector3 meteor_startPos_offset = new Vector3(0, 20, 0);
+    private Vector3 meteor_startPos_offset = new Vector3(0, 25, 0);
     private Quaternion meteor_rotation_offset = Quaternion.Euler(60, 0, 0);
 
 
@@ -57,17 +57,17 @@ public class SkillManager : MonoBehaviour
     private Vector3 iceBlizzard_startPos_offset = new Vector3(0, -2, 0);
     private Quaternion iceBlizzard_rotation_offset = Quaternion.identity;
 
-    private Vector3 iceAge_startPos_offset = new Vector3(0, -2.2f, 0);
+    private Vector3 iceAge_startPos_offset = new Vector3(0, -1.8f, 0);
     private Quaternion iceAge_rotation_offset = Quaternion.identity;
 
     // Earth
-    private Vector3 earthBender_startPos_offset = new Vector3(0, -1.3f, 5);
+    private Vector3 earthBender_startPos_offset = new Vector3(0, -2f, 7);
     private Quaternion earthBender_rotation_offset = Quaternion.identity;
 
     private Vector3 earthShatter_startPos_offset = new Vector3(0, -2f, 5);
     private Quaternion earthShatter_rotation_offset = Quaternion.identity;
 
-    private Vector3 golemFoot_startPos_offset = new Vector3(0, -2, 15);
+    private Vector3 golemFoot_startPos_offset = new Vector3(0, -2.5f, 15);
     private Quaternion golemFoot_rotation_offset = Quaternion.identity;
 
 
