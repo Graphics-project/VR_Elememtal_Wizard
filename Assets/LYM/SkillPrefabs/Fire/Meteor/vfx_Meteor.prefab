@@ -4900,9 +4900,10 @@ GameObject:
   - component: {fileID: 947354191339074935}
   - component: {fileID: 7416131794119626948}
   - component: {fileID: 6413750939353875861}
+  - component: {fileID: -1242347641363050202}
   m_Layer: 0
   m_Name: vfx_Meteor
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4990,6 +4991,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1242347641363050202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7899258130796192533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f25ed2826bb4bd489b235e20c5dc75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deal: 5
+  destroyTime: 6
 --- !u!1001 &1780256979060254575
 PrefabInstance:
   m_ObjectHideFlags: 0

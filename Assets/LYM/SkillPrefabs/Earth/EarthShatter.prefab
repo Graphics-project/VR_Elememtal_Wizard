@@ -4745,6 +4745,7 @@ GameObject:
   - component: {fileID: 5878181400216818235}
   - component: {fileID: 4561062055298406558}
   - component: {fileID: 6790497041545005666}
+  - component: {fileID: 1717121490608913463}
   m_Layer: 0
   m_Name: RockSpike
   m_TagString: Untagged
@@ -8310,7 +8311,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 0
     collisionMode: 0
@@ -8318,13 +8319,7 @@ ParticleSystem:
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    m_Planes:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    m_Planes: []
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -9538,6 +9533,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1717121490608913463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844619412339373695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f25ed2826bb4bd489b235e20c5dc75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deal: 3
+  destroyTime: 6
 --- !u!1 &2970626211377917797
 GameObject:
   m_ObjectHideFlags: 0
@@ -23725,7 +23734,7 @@ GameObject:
   - component: {fileID: 3638412879667092205}
   m_Layer: 0
   m_Name: EarthShatter
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

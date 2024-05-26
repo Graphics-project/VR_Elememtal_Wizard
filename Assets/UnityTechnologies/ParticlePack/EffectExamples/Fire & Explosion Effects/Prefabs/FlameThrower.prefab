@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 4584431484625042}
   - component: {fileID: 198637950067575458}
   - component: {fileID: 199982541912562440}
+  - component: {fileID: 6882746288488065258}
+  - component: {fileID: 4979987808987836926}
   m_Layer: 0
   m_Name: FlameThrower
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -673,8 +675,8 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 30, y: 1, z: 1}
+    m_Rotation: {x: -0, y: 0, z: 0}
+    m_Scale: {x: 27.083172, y: 0.9027724, z: 0.9027724}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4853,6 +4855,41 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!65 &6882746288488065258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634767862067424}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 1, z: 6}
+  m_Center: {x: 0, y: 0, z: 6}
+--- !u!114 &4979987808987836926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634767862067424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f25ed2826bb4bd489b235e20c5dc75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deal: 2
+  destroyTime: 5
 --- !u!1 &1685911702664702
 GameObject:
   m_ObjectHideFlags: 0

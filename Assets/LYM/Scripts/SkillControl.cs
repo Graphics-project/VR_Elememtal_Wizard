@@ -11,8 +11,11 @@ public class SkillControl : MonoBehaviour
     public GameObject[] textPros;
     public TextMeshProUGUI[] hideSkillTimeTexts;
 
-    private bool[] isHideSkills = { false, false, false, false };
+
     private float[] skillTimes = { 3, 6, 9, 12 };
+
+
+    private bool[] isHideSkills = { false, false, false, false };
     private float[] getSkillTimes = { 0, 0, 0, 0 };
 
     void Start()

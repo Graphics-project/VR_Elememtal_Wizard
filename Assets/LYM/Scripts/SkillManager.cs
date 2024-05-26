@@ -12,6 +12,9 @@ public class SkillManager : MonoBehaviour
     public List<GameObject> earthSkills = new List<GameObject>();
 
 
+    private float[] skill_cooltimes = { 1, 6, 10, 15 };
+
+
 
     // 0: fire
     // 1: ice
@@ -75,7 +78,7 @@ public class SkillManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        elementType = ElementInit();
+        // elementType = ElementInit();
         SetElementSkillType(elementType);
     }
 

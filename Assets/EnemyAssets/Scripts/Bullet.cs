@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
     private Collider bulletCollider;
 
     public int deal;
+    public float destroyTime = 3f;
+
+
 
     void Awake()
     {
@@ -17,7 +20,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         BulletRigidbody = GetComponent<Rigidbody>();
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, destroyTime);
     }
 
     private void OnTriggerEnter(Collider other)
