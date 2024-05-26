@@ -1,1 +1,1 @@
-# VR_Elememtal_Wizard
+# VR_Elemental_Wizard
