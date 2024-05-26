@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public GameObject firePoint;
     public GameObject player;
 
     // skills
@@ -17,10 +16,10 @@ public class SkillManager : MonoBehaviour
     // 0: fire
     // 1: ice
     // 2: earth
-    private int elementType = 0;
+    public int elementType = 0;
 
 
-    private float timeTofire = 0;
+    // private float timeTofire = 0;
 
     private GameObject skillToSpawn;
     private List<GameObject> currentSkills = new List<GameObject>();
@@ -35,15 +34,18 @@ public class SkillManager : MonoBehaviour
 
 
     // skill variables (offset)
+    private Vector3 simpleProjectile_startPos_offset = new Vector3(0, 0, 2);
+    private Quaternion simpleProjectile_rotation_offset = Quaternion.identity;
+
 
     // Fire
-    private Vector3 fireBreath_startPos_offset = new Vector3(0, 0, 5);
+    private Vector3 fireBreath_startPos_offset = new Vector3(0, 0, 2.5f);
     private Quaternion fireBreath_rotation_offset = Quaternion.identity;
 
-    private Vector3 fireTornado_startPos_offset = new Vector3(0, 0, 10);
+    private Vector3 fireTornado_startPos_offset = new Vector3(0, -0.5f, 10);
     private Quaternion fireTornado_rotation_offset = Quaternion.Euler(0, -90, 0);
 
-    private Vector3 meteor_startPos_offset = new Vector3(0, 30, 0);
+    private Vector3 meteor_startPos_offset = new Vector3(0, 25, 0);
     private Quaternion meteor_rotation_offset = Quaternion.Euler(60, 0, 0);
 
 
@@ -52,14 +54,28 @@ public class SkillManager : MonoBehaviour
     private Vector3 iceLance_startPos_offset = new Vector3(0, 10, 0);
     private Quaternion iceLance_rotation_offset = Quaternion.Euler(45, 0, 0);
 
+    private Vector3 iceBlizzard_startPos_offset = new Vector3(0, -2, 0);
+    private Quaternion iceBlizzard_rotation_offset = Quaternion.identity;
+
+    private Vector3 iceAge_startPos_offset = new Vector3(0, -1.8f, 0);
+    private Quaternion iceAge_rotation_offset = Quaternion.identity;
 
     // Earth
+    private Vector3 earthBender_startPos_offset = new Vector3(0, -2f, 7);
+    private Quaternion earthBender_rotation_offset = Quaternion.identity;
+
+    private Vector3 earthShatter_startPos_offset = new Vector3(0, -2f, 5);
+    private Quaternion earthShatter_rotation_offset = Quaternion.identity;
+
+    private Vector3 golemFoot_startPos_offset = new Vector3(0, -2.5f, 15);
+    private Quaternion golemFoot_rotation_offset = Quaternion.identity;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        elementType = ElementInit();
         SetElementSkillType(elementType);
     }
 
@@ -68,7 +84,8 @@ public class SkillManager : MonoBehaviour
     {
         skillSelect();
 
-        if (skillSign && Time.time >= timeTofire)
+        // if (skillSign && Time.time >= timeTofire)
+        if (skillSign)
         {
             skillUse();
         }
@@ -79,6 +96,15 @@ public class SkillManager : MonoBehaviour
     // ===========================================
     //   Functions
     // ===========================================
+
+    int ElementInit()
+    {
+        // PlayerPrefs에서 선택된 캐릭터의 인덱스를 불러옴
+        int selectedCharacterIndex = PlayerPrefs.GetInt("selectedCharacter", 0); // 기본값으로 0을 사용
+
+        return selectedCharacterIndex;
+    }
+
 
     // -------------------------------------------
     //  SetElementSkillType()
@@ -142,7 +168,7 @@ public class SkillManager : MonoBehaviour
         // Basic Skill(skill 0)
         if (skillNum == 0)
         {
-            BasicSkill();
+            SpawnSimpleSkills(simpleProjectile_startPos_offset, simpleProjectile_rotation_offset);
         }
 
         // Epic SKill1(skill 1)
@@ -160,7 +186,8 @@ public class SkillManager : MonoBehaviour
             }
             else if (elementType == 2)
             {
-
+                // earth bender
+                SpawnSimpleSkills(earthBender_startPos_offset, earthBender_rotation_offset);
             }
         }
         // Epic SKill1(skill 2)
@@ -173,11 +200,13 @@ public class SkillManager : MonoBehaviour
             }
             else if (elementType == 1)
             {
-
+                // ice blizzard
+                SpawnSimpleSkills(iceBlizzard_startPos_offset, iceBlizzard_rotation_offset);
             }
             else if (elementType == 2)
             {
-
+                // earth shatter
+                SpawnSimpleSkills(earthShatter_startPos_offset, earthShatter_rotation_offset);
             }
         }
         // Ultimate Skill(skill 3)
@@ -190,32 +219,34 @@ public class SkillManager : MonoBehaviour
             }
             else if (elementType == 1)
             {
-
+                // ice age
+                SpawnSimpleSkills(iceAge_startPos_offset, iceAge_rotation_offset);
             }
             else if (elementType == 2)
             {
-
+                // golem foot
+                SpawnSimpleSkills(golemFoot_startPos_offset, golemFoot_rotation_offset);
             }
         }
     }
 
 
 
-    // -------------------------------------------
-    //  BasicSkill()
-    // -------------------------------------------
-    void BasicSkill()
-    {
-        if (firePoint != null)
-        {
-            timeTofire = Time.time + 1 / skillToSpawn.GetComponent<ProjectileMove>().fireRate;
-            Instantiate(skillToSpawn, firePoint.transform.position, firePoint.transform.rotation);
-        }
-        else
-        {
-            Debug.Log("No Fire Point");
-        }
-    }
+    // // -------------------------------------------
+    // //  BasicSkill()
+    // // -------------------------------------------
+    // void BasicSkill()
+    // {
+    //     if (firePoint != null)
+    //     {
+    //         timeTofire = Time.time + 1 / skillToSpawn.GetComponent<ProjectileMove>().fireRate;
+    //         Instantiate(skillToSpawn, firePoint.transform.position, firePoint.transform.rotation);
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("No Fire Point");
+    //     }
+    // }
 
     // -------------------------------------------
     //  SpawnSimpleSkills()

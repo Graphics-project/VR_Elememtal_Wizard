@@ -1236,6 +1236,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1804159291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5573283239965899715, guid: 68569d628966cc64b929a21b8f676519, type: 3}
+  m_PrefabInstance: {fileID: 5039664579091784378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3595329966994757068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5836859707349801351, guid: 68569d628966cc64b929a21b8f676519, type: 3}
@@ -1306,11 +1311,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68569d628966cc64b929a21b8f676519, type: 3}
---- !u!1 &5039664579091784379 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3493832439474620500, guid: 68569d628966cc64b929a21b8f676519, type: 3}
-  m_PrefabInstance: {fileID: 5039664579091784378}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8019637681315479637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1322,11 +1322,15 @@ PrefabInstance:
     - target: {fileID: 2461388391763671889, guid: 7008472f1f9422c419cc6a14a58e87e9, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 5039664579091784379}
+      objectReference: {fileID: 1804159291}
     - target: {fileID: 2461388391763671889, guid: 7008472f1f9422c419cc6a14a58e87e9, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 3595329966994757068}
+    - target: {fileID: 2461388391763671889, guid: 7008472f1f9422c419cc6a14a58e87e9, type: 3}
+      propertyPath: elementType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4585838972442850486, guid: 7008472f1f9422c419cc6a14a58e87e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
