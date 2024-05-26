@@ -2930,8 +2930,8 @@ MonoBehaviour:
   - {fileID: 1115249360}
   - {fileID: 937088881}
   - {fileID: 1905596067}
-  status: {fileID: 1994201990}
-  stopMenu: {fileID: 1566279650}
+  status: {fileID: 0}
+  stopMenu: {fileID: 0}
   gameOverUI: {fileID: 0}
 --- !u!1 &316507889
 GameObject:

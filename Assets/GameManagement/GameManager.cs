@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 using UnityEngine.XR;
 
 using Unity.XR.CoreUtils;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Spawner spawner1;
     public Spawner spawner2;
     public PoolManager pool;
-    //public UIManager uiManager;
+    public InGameUIController inGameUIController;
 
     public int level = 0;   // todo : change to private
     public int currentEnemyNum = 0;
@@ -110,12 +111,27 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        //uiManager.ShowPauseMenu();
+        inGameUIController.ToggleStopMenu();
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        //uiManager.HidePauseMenu();
+        inGameUIController.ToggleStopMenu();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        isGameActive = false;
+        SceneManager.LoadScene("1 Start Scene");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
