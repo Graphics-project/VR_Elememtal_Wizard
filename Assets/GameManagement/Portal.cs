@@ -12,7 +12,7 @@ public class Portal : MonoBehaviour
         if (other.tag == "Player" && targetLocation != null)
         {
             other.transform.position = targetLocation.position;
-            GameManager.instance.setLevel(levelToLoad);
+            GameManager.instance.LevelCoroutine();
         }
     }
 }

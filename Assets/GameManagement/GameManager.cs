@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject player;
-    public Spawner spawner1;
-    public Spawner spawner2;
+    public Spawner spawner;
     public PoolManager pool;
     public InGameUIController inGameUIController;
 
@@ -65,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         startTime = Time.time;
         isGameActive = true;
-        setLevel(1);
+        level = 1;
     }
 
     public void GameOver()
@@ -73,22 +72,6 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         //uiManager.ShowGameOverScreen(elapsedTime);
         //SceneManager.LoadScene("1 Start Scene");
-    }
-
-    public void setLevel(int level)
-    {
-        this.level = level;
-
-        if (level == 1)
-        {
-            spawner2.gameObject.SetActive(false);
-            spawner1.gameObject.SetActive(true);
-        }
-        else if (level == 2)
-        {
-            spawner1.gameObject.SetActive(false);
-            spawner2.gameObject.SetActive(true);
-        }
     }
 
     public void LevelCoroutine()
@@ -104,7 +87,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        setLevel(level + 1);
+        level++;
     }
 
     public int getCurrentEnemyNum()

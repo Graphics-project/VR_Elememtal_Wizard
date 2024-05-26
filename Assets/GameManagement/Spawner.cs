@@ -46,7 +46,18 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         GameObject enemy = GameManager.instance.pool.Get(Random.Range(0, 2));
-        enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        if (level == 1)
+        {
+            int num = Random.Range(1, 6);
+            enemy.transform.position = spawnPoint[num].position - gameObject.transform.position;
+            Debug.Log(spawnPoint[num]);
+        }
+        else if (level == 2)
+        {
+            
+            enemy.transform.position = spawnPoint[Random.Range(6, 10)].position;
+        }
+        //enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         GameManager.instance.incCurrentEnemyNum();
     }
 }
