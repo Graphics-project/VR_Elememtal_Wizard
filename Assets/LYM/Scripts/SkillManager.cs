@@ -29,14 +29,31 @@ public class SkillManager : MonoBehaviour
     private int skillNum = 0;
 
 
+    
 
 
 
 
+    // skill variables (offset)
 
-    // skill variables 
-    private Vector3 meteor_startPos_offset = new Vector3(0, 20, 0);
-    private Vector3 meteor_lastPos_offset = new Vector3(0, -2, 10);
+    // Fire
+    private Vector3 fireBreath_startPos_offset = new Vector3(0, 0, 5);
+    private Quaternion fireBreath_rotation_offset = Quaternion.identity;
+
+    private Vector3 fireTornado_startPos_offset = new Vector3(0, 0, 10);
+    private Quaternion fireTornado_rotation_offset = Quaternion.Euler(0, -90, 0);
+
+    private Vector3 meteor_startPos_offset = new Vector3(0, 30, 0);
+    private Quaternion meteor_rotation_offset = Quaternion.Euler(60, 0, 0);
+
+
+
+    // Ice
+    private Vector3 iceLance_startPos_offset = new Vector3(0, 10, 0);
+    private Quaternion iceLance_rotation_offset = Quaternion.Euler(45, 0, 0);
+
+
+    // Earth
 
 
 
@@ -81,6 +98,7 @@ public class SkillManager : MonoBehaviour
         {
             currentSkills = earthSkills;
         }
+
     }
 
 
@@ -91,22 +109,22 @@ public class SkillManager : MonoBehaviour
     // -------------------------------------------
     void skillSelect()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             skillNum = 0;
             skillSign = true;
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             skillNum = 1;
             skillSign = true;
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             skillNum = 2;
             skillSign = true;
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             skillNum = 3;
             skillSign = true;
@@ -121,30 +139,69 @@ public class SkillManager : MonoBehaviour
     void skillUse()
     {
 
-        // Basic Skill(skill 1)
+        // Basic Skill(skill 0)
         if (skillNum == 0)
         {
             BasicSkill();
         }
 
-        // Epic SKill(skill 2)
+        // Epic SKill1(skill 1)
         if (skillNum == 1)
         {
-            EpicSkill();
-        }
+            if (elementType == 0)
+            {
+                // fire breath
+                SpawnSimpleSkills(fireBreath_startPos_offset, fireBreath_rotation_offset);
+            }
+            else if (elementType == 1)
+            {
+                // ice lance
+                SpawnSimpleSkills(iceLance_startPos_offset, iceLance_rotation_offset);
+            }
+            else if (elementType == 2)
+            {
 
-        // Ultimate Skill(skill 3)
-        if (elementType == 2)
+            }
+        }
+        // Epic SKill1(skill 2)
+        if (skillNum == 2)
         {
+            if (elementType == 0)
+            {
+                // Fire Tornado
+                SpawnSimpleSkills(fireTornado_startPos_offset, fireTornado_rotation_offset);
+            }
+            else if (elementType == 1)
+            {
 
+            }
+            else if (elementType == 2)
+            {
+
+            }
         }
+        // Ultimate Skill(skill 3)
+        if (skillNum == 3)
+        {
+            if (elementType == 0)
+            {
+                // Meteor
+                SpawnSimpleSkills(meteor_startPos_offset, meteor_rotation_offset);
+            }
+            else if (elementType == 1)
+            {
 
+            }
+            else if (elementType == 2)
+            {
+
+            }
+        }
     }
 
 
 
     // -------------------------------------------
-    //  [1st skill]
     //  BasicSkill()
     // -------------------------------------------
     void BasicSkill()
@@ -158,40 +215,35 @@ public class SkillManager : MonoBehaviour
         {
             Debug.Log("No Fire Point");
         }
-
     }
 
     // -------------------------------------------
-    //  [2nd skill]
-    //  EpicSkill()
+    //  SpawnSimpleSkills()
     // -------------------------------------------
-    void EpicSkill()
+    void SpawnSimpleSkills(Vector3 startPos_offset, Quaternion startRotate_offest)
     {
-        if (elementType == 0)
-        {
-            Vector3 startPos = player.transform.TransformPoint(meteor_startPos_offset);
+        Vector3 startPos = player.transform.TransformPoint(startPos_offset);
+        Vector3 forwardDirection = player.transform.forward;
+        forwardDirection.y = 0;
+        forwardDirection.Normalize(); 
 
-            GameObject objVFX = Instantiate(skillToSpawn, startPos, Quaternion.identity);
-
-            Vector3 endPos = player.transform.TransformPoint(meteor_lastPos_offset);
-
-            RotateTo(objVFX, endPos);
-        }
+        Quaternion startRotate = Quaternion.LookRotation(forwardDirection) * startRotate_offest;
+        Instantiate(skillToSpawn, startPos, startRotate);
     }
 
 
+
     // -------------------------------------------
-    //  [3rd skill]
-    //  spawnProjectile()
+    //  SpawnSimpleSkills2()
     // -------------------------------------------
-    
+    //void SpawnSimpleSkills2(Vector3 startPos_offset, Quaternion startRotate_offest)
+    //{
+    //    Vector3 startPos = player.transform.TransformPoint(startPos_offset);
+    //    Quaternion startRotate = startRotate_offest;
+
+    //    Instantiate(skillToSpawn, startPos, startRotate);
+    //}
 
 
 
-    void RotateTo(GameObject obj, Vector3 destination)
-    {
-        var direction = destination - obj.transform.position;
-        var rotation = Quaternion.LookRotation(direction);
-        obj.transform.localRotation = Quaternion.Lerp(obj.transform.rotation, rotation, 1);
-    }
 }
