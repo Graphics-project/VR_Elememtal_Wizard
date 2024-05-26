@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         isGameActive = false;
-        SceneManager.LoadScene("1 Start Scene");
+        SceneManager.LoadScene("New Start Scene");
     }
 
     public void QuitGame()
