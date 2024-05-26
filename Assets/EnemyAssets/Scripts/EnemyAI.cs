@@ -257,7 +257,6 @@ public class EnemyAI : MonoBehaviour
         originalAgentSpeed = agent.speed;
         originalAnimatorSpeed = Anim.speed;
 
-        //todo : 2초간 공격 불가 상태 설정
         alreadyAttacked = true;
         agent.speed = 0;
         Anim.speed = 0;
