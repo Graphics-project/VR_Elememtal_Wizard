@@ -12,7 +12,7 @@ public class SkillControl : MonoBehaviour
     public TextMeshProUGUI[] hideSkillTimeTexts;
 
 
-    private float[] skillTimes = { 3, 6, 9, 12 };
+    private float[] skillTimes = { 0, 0, 0, 0 };
 
 
     private bool[] isHideSkills = { false, false, false, false };
