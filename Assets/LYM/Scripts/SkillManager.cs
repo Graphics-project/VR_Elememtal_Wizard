@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    public GameObject firePoint;
     public GameObject player;
 
     // skills
@@ -34,8 +35,6 @@ public class SkillManager : MonoBehaviour
 
 
     // skill variables (offset)
-    private Vector3 simpleProjectile_startPos_offset = new Vector3(0, 0, 2);
-    private Quaternion simpleProjectile_rotation_offset = Quaternion.identity;
 
     // Fire
     private Vector3 fireBreath_startPos_offset = new Vector3(0, 0, 5);
@@ -143,7 +142,7 @@ public class SkillManager : MonoBehaviour
         // Basic Skill(skill 0)
         if (skillNum == 0)
         {
-            SpawnSimpleSkills(simpleProjectile_startPos_offset, simpleProjectile_rotation_offset);
+            BasicSkill();
         }
 
         // Epic SKill1(skill 1)
@@ -205,11 +204,18 @@ public class SkillManager : MonoBehaviour
     // -------------------------------------------
     //  BasicSkill()
     // -------------------------------------------
-    // void BasicSkill()
-    // {
-    //     timeTofire = Time.time + 1 / skillToSpawn.GetComponent<ProjectileMove>().fireRate;
-    //     Instantiate(skillToSpawn, firePoint.transform.position, firePoint.transform.rotation);
-    // }
+    void BasicSkill()
+    {
+        if (firePoint != null)
+        {
+            timeTofire = Time.time + 1 / skillToSpawn.GetComponent<ProjectileMove>().fireRate;
+            Instantiate(skillToSpawn, firePoint.transform.position, firePoint.transform.rotation);
+        }
+        else
+        {
+            Debug.Log("No Fire Point");
+        }
+    }
 
     // -------------------------------------------
     //  SpawnSimpleSkills()
