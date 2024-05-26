@@ -78,7 +78,7 @@ public class SkillManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // elementType = ElementInit();
+        elementType = ElementInit();
         SetElementSkillType(elementType);
     }
 

@@ -4745,7 +4745,6 @@ GameObject:
   - component: {fileID: 5878181400216818235}
   - component: {fileID: 4561062055298406558}
   - component: {fileID: 6790497041545005666}
-  - component: {fileID: 1717121490608913463}
   m_Layer: 0
   m_Name: RockSpike
   m_TagString: Untagged
@@ -9533,20 +9532,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1717121490608913463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844619412339373695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f25ed2826bb4bd489b235e20c5dc75c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deal: 3
-  destroyTime: 6
 --- !u!1 &2970626211377917797
 GameObject:
   m_ObjectHideFlags: 0
@@ -23732,6 +23717,7 @@ GameObject:
   - component: {fileID: 2336339030635702342}
   - component: {fileID: 758483169001305950}
   - component: {fileID: 3638412879667092205}
+  - component: {fileID: 7060613861290359298}
   m_Layer: 0
   m_Name: EarthShatter
   m_TagString: PlayerProjectile
@@ -28637,6 +28623,27 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!65 &7060613861290359298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413698069371683259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 7, z: 15}
+  m_Center: {x: 0, y: 0, z: 7}
 --- !u!1 &5489472826938036341
 GameObject:
   m_ObjectHideFlags: 0

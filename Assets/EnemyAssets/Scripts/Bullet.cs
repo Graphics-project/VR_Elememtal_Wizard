@@ -11,12 +11,6 @@ public class Bullet : MonoBehaviour
     public float destroyTime = 3f;
 
 
-
-    void Awake()
-    {
-        deal = 1;
-    }
-
     void Start()
     {
         BulletRigidbody = GetComponent<Rigidbody>();

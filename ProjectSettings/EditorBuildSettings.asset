@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Demo_01.unity
     guid: 164fc101ab8f1584d9f3f9772734e457
   - enabled: 1
-    path: Assets/Scenes/1 Start Scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/v1.0)Demo_01.unity
+    guid: 988e1aa4f599e4fad9e2d494955e425e
+  - enabled: 1
+    path: Assets/Scenes/New Start Scene.unity
+    guid: 6c5fb0fb7baee4a82b46929afa9d561b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 918f977c293df1445bf6309d8ebb187b, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 08f48a474e5923a458273f938b432683, type: 2}
