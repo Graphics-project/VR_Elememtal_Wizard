@@ -237,7 +237,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damage)
     {   
         Anim.CrossFade(DamagedState, 0.1f, 0, 0.2f);
-        //rigidbody.AddForce(transform.forward * -2f, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.forward * -2f, ForceMode.Impulse);
         HP -= damage;
         if (HP <= 0)
             status[Die] = true;
