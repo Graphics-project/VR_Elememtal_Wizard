@@ -17,13 +17,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (currentHealth < 0)
         {
-            TakeDamage(20);
+            //GameManager.instance.PauseGame();
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 

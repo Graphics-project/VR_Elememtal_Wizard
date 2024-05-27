@@ -5,7 +5,6 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Transform targetLocation;
-    public int levelToLoad;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -6,7 +6,7 @@ public class PoolManager : MonoBehaviour
 {
     public GameObject[] prefabs;
     List<GameObject>[] pools;
-    public Spawner spawner;
+    Spawner spawner;
 
     private void Awake()
     {
@@ -50,7 +50,7 @@ public class PoolManager : MonoBehaviour
         {
             GameObject child = transform.GetChild(i).gameObject;
             Destroy(child);
-            GameManager.instance.decCurrentEnemyNum();
+            GameManager.instance.setCurrentEnemyNumZero();
         }
 
     }
