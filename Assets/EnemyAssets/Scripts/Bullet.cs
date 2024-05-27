@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody BulletRigidbody;
-    private Collider bulletCollider;
 
     public int deal;
     public float destroyTime = 3f;
@@ -20,11 +19,11 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         EnemyAI target = other.GetComponent<EnemyAI>();
-        //PlayerController player = other.GetComponent<PlayerController>();
+        Player player = GameManager.instance.player.GetComponent<Player>();
 
-        if (gameObject.tag == "EnemyProjectile" && other.tag == "player")
+        if (gameObject.tag == "EnemyProjectile" && other.tag == "Player")
         {
-            //player.setDamageState();
+            player.TakeDamage(deal);
         }
 
         if (gameObject.tag == "PlayerProjectile" && (other.tag == "Ghost" || other.tag == "Golem" || other.tag == "Mummy"))

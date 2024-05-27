@@ -103,6 +103,10 @@ public class GameManager : MonoBehaviour
         currentEnemyNum--;
         kills++;
     }
+    public void setCurrentEnemyNumZero()
+    {
+        currentEnemyNum = 0;
+    }
 
     public void PauseGame()
     {
