@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     {
         startTime = Time.time;
         isGameActive = true;
+        isGameOver = false;
         LevelCoroutine();
     }
 
