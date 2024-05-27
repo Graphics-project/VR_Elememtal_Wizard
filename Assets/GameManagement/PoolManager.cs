@@ -50,7 +50,7 @@ public class PoolManager : MonoBehaviour
         {
             GameObject child = transform.GetChild(i).gameObject;
             Destroy(child);
-            GameManager.instance.decCurrentEnemyNum();
+            GameManager.instance.setCurrentEnemyNumZero();
         }
 
     }
