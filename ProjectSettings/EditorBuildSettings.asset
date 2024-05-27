@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/v1.0)Demo_01.unity
     guid: 988e1aa4f599e4fad9e2d494955e425e
+  - enabled: 1
+    path: Assets/Scenes/End Credit.unity
+    guid: 39c734ef0eb994abf95a302bb867fc90
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: dc84ad327da2b5f489371aff32dc7d64, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 918f977c293df1445bf6309d8ebb187b, type: 2}
