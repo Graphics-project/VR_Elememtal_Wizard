@@ -70,8 +70,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameActive = false;
-        //uiManager.ShowGameOverScreen(elapsedTime);
-        //SceneManager.LoadScene("1 Start Scene");
+        inGameUIController.setGameOverUI();
     }
 
     public void LevelCoroutine()
