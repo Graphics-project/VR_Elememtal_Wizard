@@ -150,17 +150,6 @@ public class EnemyAI : MonoBehaviour
         //    status[Damaged] = false;
     }
 
-    private void Dissolve()
-    {
-        Dissolve_value -= Time.deltaTime;
-        for (int i = 0; i < MeshR.Length; i++)
-        {
-            MeshR[i].material.SetFloat("_Dissolve", Dissolve_value);
-        }
-        if (Dissolve_value <= 0)
-            DestroyEnemy();
-    }
-
     private void Patrolling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -284,6 +273,16 @@ public class EnemyAI : MonoBehaviour
         GameManager.instance.decCurrentEnemyNum();
         if (gameObject.tag == "Golem")
             GameManager.instance.GameClear();
+    }
+    private void Dissolve()
+    {
+        Dissolve_value -= Time.deltaTime;
+        for (int i = 0; i < MeshR.Length; i++)
+        {
+            MeshR[i].material.SetFloat("_Dissolve", Dissolve_value);
+        }
+        if (Dissolve_value <= 0)
+            DestroyEnemy();
     }
 
     private void OnDrawGizmosSelected()
