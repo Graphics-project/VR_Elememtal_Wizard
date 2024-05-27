@@ -206,28 +206,33 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            if (projectile2 != null && Physics.CheckSphere(transform.position, attackRange / 2, whatIsPlayer))
+            if (gameObject.tag == "Golem" && Physics.CheckSphere(transform.position, attackRange / 2, whatIsPlayer))
             {
                 Anim.CrossFade(AttackState2, 0.15f, 0, 0.3f);
-                Instantiate(projectile2);
+                InstantiateProjectile(projectile2, false);
+            }
+            else if (gameObject.tag == "Mummy") {
+                Anim.CrossFade(AttackState2, 0.15f, 0, 0.3f);
+                InstantiateProjectile(projectile2, false);
             }
             else
             {
                 Anim.CrossFade(AttackState, 0.15f, 0, 0.3f);
-                InstantiateProjectile(projectile);
+                InstantiateProjectile(projectile, true);
             }
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
-    private void InstantiateProjectile(GameObject projectile)
+    private void InstantiateProjectile(GameObject projectile, bool isFar)
     {
         
         Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
         rb.AddForce(transform.forward * 5f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 6f, ForceMode.Impulse);
+        if (isFar)
+            rb.AddForce(transform.up * 5f, ForceMode.Impulse);
     }
     private void ResetAttack()
     {
