@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class SkillManager : MonoBehaviour
 {
+    public InputDevice leftDevice;
+    public InputDevice rightDevice;
+
+
     public GameObject player;
     public SkillControl fireSkillControl;
     public SkillControl iceSkillControl;
@@ -84,15 +89,24 @@ public class SkillManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InitializeDevices();
         elementType = ElementInit();
         SetElementSkillType(elementType);
 
+        var inputDevices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!leftDevice.isValid || !rightDevice.isValid)
+        {
+            InitializeDevices();
+        }
+
         skillSelect();
+        skillShoot();
         UpdateCooldowns();
 
         // if (skillSign && Time.time >= timeTofire)
@@ -110,6 +124,30 @@ public class SkillManager : MonoBehaviour
     // ===========================================
     //   Functions
     // ===========================================
+
+
+    void InitializeDevices()
+    {
+        var inputDevices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
+
+        foreach (var device in inputDevices)
+        {
+            if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
+            {
+                leftDevice = device;
+            }
+            else if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
+            {
+                rightDevice = device;
+            }
+        }
+    }
+
+
+
+
+
 
     int ElementInit()
     {
@@ -168,29 +206,62 @@ public class SkillManager : MonoBehaviour
     // -------------------------------------------
     void skillSelect()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        bool left_primaryButtonPressed = false;
+        bool left_secondaryButtonPressed = false;
+        
+        bool right_primaryButtonPressed = false;
+        bool right_secondaryButtonPressed = false;
+
+        leftDevice.TryGetFeatureValue(CommonUsages.primaryButton, out left_primaryButtonPressed);
+        leftDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out left_secondaryButtonPressed);
+
+        rightDevice.TryGetFeatureValue(CommonUsages.primaryButton, out right_primaryButtonPressed);
+        rightDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out right_secondaryButtonPressed);
+
+        if (right_primaryButtonPressed)
         {
             skillNum = 0;
-            skillSign = true;
+            Debug.Log("right_primary");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (right_secondaryButtonPressed)
         {
             skillNum = 1;
-            skillSign = true;
+            Debug.Log("right_secondary");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (left_primaryButtonPressed)
         {
             skillNum = 2;
-            skillSign = true;
+            Debug.Log("left_primary");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        else if (left_secondaryButtonPressed)
         {
             skillNum = 3;
-            skillSign = true;
+            Debug.Log("left_secondary");
         }
-
         skillToSpawn = currentSkills[skillNum];
     }
+
+
+    // -------------------------------------------
+    //  skillShoot()
+    // -------------------------------------------
+    void skillShoot()
+    {
+        bool left_triggerPressed = false;
+        bool right_triggerPressed = false;
+
+        leftDevice.TryGetFeatureValue(CommonUsages.triggerButton, out left_triggerPressed);
+        rightDevice.TryGetFeatureValue(CommonUsages.triggerButton, out right_triggerPressed);
+
+
+        if (left_triggerPressed || right_triggerPressed)
+        {
+            skillSign = true;
+        }
+    }
+
+
 
     // -------------------------------------------
     //  skillUse()
