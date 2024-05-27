@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2655977618563148070}
   - component: {fileID: 4932809173226486472}
   - component: {fileID: 3008169777930348401}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ice_Projectile
   m_TagString: SlowProjectile
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1939547872342730166}
   - component: {fileID: 2001028848066653031}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 6533612340373587330}
   - component: {fileID: 2799629341973159396}
   - component: {fileID: 1543247810635308815}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

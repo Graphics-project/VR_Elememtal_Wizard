@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3054614245064856028}
   - component: {fileID: 4991714541427949187}
   - component: {fileID: 7316021781081916837}
-  m_Layer: 9
+  m_Layer: 1
   m_Name: EarthBender
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}

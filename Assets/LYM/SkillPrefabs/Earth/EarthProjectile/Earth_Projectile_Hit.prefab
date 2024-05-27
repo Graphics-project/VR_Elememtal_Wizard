@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7179370811923166007}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Earth_Projectile_Hit
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4260790104783605883}
   - component: {fileID: 7449739852122114879}
   - component: {fileID: 2861980444046620800}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4933,7 +4933,7 @@ GameObject:
   - component: {fileID: 6136476560196570043}
   - component: {fileID: 146827575241650694}
   - component: {fileID: 74583872866282339}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9821,7 +9821,7 @@ GameObject:
   - component: {fileID: 8588401412617177859}
   - component: {fileID: 4440640483365191175}
   - component: {fileID: 5251758289467942227}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

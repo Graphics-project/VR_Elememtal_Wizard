@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7975374417911629647}
   - component: {fileID: 724463323735480030}
   - component: {fileID: 7492337319721333911}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Crater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 8222001794342176498}
   - component: {fileID: 2279070951372499853}
   - component: {fileID: 3106246999867362551}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: MeteorDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9787,7 +9787,7 @@ GameObject:
   - component: {fileID: 4032345297377175880}
   - component: {fileID: 1666829492827141987}
   - component: {fileID: 3770162506760096120}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Smoke Floating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14674,7 +14674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8498432850677288587}
   - component: {fileID: -1821652745996859732}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: vfx_MeteorHit
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -14722,7 +14722,7 @@ GameObject:
   - component: {fileID: 3377305577958793153}
   - component: {fileID: 1537061437749627371}
   - component: {fileID: 4164746283639711106}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19619,7 +19619,7 @@ GameObject:
   - component: {fileID: 8629676163179818628}
   - component: {fileID: 1221732686022255406}
   - component: {fileID: 5283265211215213335}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Particle Floating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24507,7 +24507,7 @@ GameObject:
   - component: {fileID: 7467364891986699414}
   - component: {fileID: 4347141850554822437}
   - component: {fileID: 8252304405970266736}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Shock Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29395,7 +29395,7 @@ GameObject:
   - component: {fileID: 1931675549259216898}
   - component: {fileID: 883645764674663765}
   - component: {fileID: 5301478888931239150}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SmokeCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34283,7 +34283,7 @@ GameObject:
   - component: {fileID: 7739030402475848915}
   - component: {fileID: 4837675862903584486}
   - component: {fileID: 3285886373676714675}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39171,7 +39171,7 @@ GameObject:
   - component: {fileID: 8095733851094662583}
   - component: {fileID: 3357304577715839301}
   - component: {fileID: 8932031643950255672}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Particle Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44059,7 +44059,7 @@ GameObject:
   - component: {fileID: 6853543590080068141}
   - component: {fileID: 1580046766831779672}
   - component: {fileID: 272852576009858686}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
