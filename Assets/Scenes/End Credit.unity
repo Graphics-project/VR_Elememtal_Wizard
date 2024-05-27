@@ -670,6 +670,7 @@ GameObject:
   - component: {fileID: 270930628}
   - component: {fileID: 270930630}
   - component: {fileID: 270930629}
+  - component: {fileID: 270930631}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -716,13 +717,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The Elemental Wizard\n\n\uC81C\uC791\uC790 : \uACE0\uBCD1\uD558, \uC774\uC601\uBBFC,
-    \uC774\uC2B9\uC6D0\n\u3141\u3141\u3141: \u3141\u3141\u3141\n\u3141\u3141\u3141:
-    \u3141\u3141\u3141\n\u3141\u3141\u3141: \u3141\u3141\u3141\n\u3141\u3141\u3141:
-    \u3141\u3141\u3141\n\u3141\u3141\u3141: \u3141\u3141\u3141\n\u3141\u3141\u3141:
-    \u3141\u3141\u3141\n\u3141\u3141\u3141: \u3141\u3141\u3141\n\u3141\u3141\u3141:
-    \u3141\u3141\u3141\n\u3141\u3141\u3141: \u3141\u3141\u3141\n\u3141\u3141\u3141:
-    \u3141\u3141\u3141"
+  m_text: "The Elemental Wizard\n\n\uCC98\uCE58\uD55C \uC801 \uC218 : 00\n\n\uCD1D
+    \uD50C\uB808\uC774 \uD0C0\uC784 : 00:00\n\n\n\uD50C\uB808\uC774 \uD574\uC8FC\uC154\uC11C
+    \uAC10\uC0AC\uD569\uB2C8\uB2E4!\n\n\n\n------------------------\n\n\n\n\uC81C\uC791\uC790
+    : \uACE0\uBCD1\uD558, \uC774\uC601\uBBFC, \uC774\uC2B9\uC6D0\n\n\uC81C\uC791\uAE30\uAC04
+    : 2024 / 05 / 01 ~ 05 / 28\n\n\uC801 \uB514\uC790\uC778 : \uACE0\uBCD1\uD558\n\nVR
+    \uC138\uD305 : \uC774\uC601\uBBFC\n\n\uB9F5 \uB514\uC790\uC778 : \uC774\uC2B9\uC6D0\n\nVFX
+    : \uACE0\uBCD1\uD558, \uC774\uC601\uBBFC\n\nUI/UX : \uC774\uC2B9\uC6D0\n\n\uAC8C\uC784
+    \uC2DC\uC2A4\uD15C \uB514\uC790\uC778 : \uACE0\uBCD1\uD558, \uC774\uC601\uBBFC,
+    \uC774\uC2B9\uC6D0\n\n\uC2DC\uB098\uB9AC\uC624 : \uACE0\uBCD1\uD558, \uC774\uC601\uBBFC,
+    \uC774\uC2B9\uC6D0\n\n\uAC8C\uC784 \uD14C\uC2A4\uD2B8 : \uACE0\uBCD1\uD558, \uC774\uC601\uBBFC,
+    \uC774\uC2B9\uC6D0\n\n[\uC0AC\uC6A9\uD55C \uC5D0\uC14B]\nBattle Wizard Poly Art\nPOLYDesert\nRPG
+    Poly Pack - Lite\nLow-Poly Simple Nature Pack\n\n\n\n\nVery Special Thanks to
+    Prof. \uBC15\uC900"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0be93ae8e9e1440ab6af5e4d179f9b4, type: 2}
   m_sharedMaterial: {fileID: -6221762819318304758, guid: d0be93ae8e9e1440ab6af5e4d179f9b4, type: 2}
@@ -785,7 +792,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -15.633046, y: 0, z: -9.254558, w: 0}
+  m_margin: {x: -23.763807, y: 0, z: -20.846342, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -799,6 +806,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270930627}
   m_CullTransparentMesh: 1
+--- !u!114 &270930631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270930627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd55f2fc8b2547b8a60b2d3fad27098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endCreditText: {fileID: 270930629}
+  kills: 0
+  elapsedTime: 0
 --- !u!1 &366060044
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2467,7 @@ Transform:
   m_GameObject: {fileID: 1580874048}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.008978009, y: -1.583282, z: 2.09}
+  m_LocalPosition: {x: -0.008978009, y: -1.583282, z: 2.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
