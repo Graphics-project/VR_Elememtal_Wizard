@@ -52,7 +52,7 @@ public class Spawner : MonoBehaviour
 
     public Vector3 GetSpawnPosition()
     {
-        Vector3 ret = new Vector3(0,0,0);
+        Vector3 ret = new Vector3(0, 0, 0);
 
         if (level == 1)
         {
