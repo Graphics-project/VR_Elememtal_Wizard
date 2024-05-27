@@ -12,8 +12,7 @@ public class SkillControl : MonoBehaviour
     public TextMeshProUGUI[] hideSkillTimeTexts;
 
 
-    private float[] skillTimes = { 0, 0, 0, 0 };
-
+    private float[] skillTimes = { 1, 6, 10, 15 };
 
     private bool[] isHideSkills = { false, false, false, false };
     private float[] getSkillTimes = { 0, 0, 0, 0 };
@@ -31,6 +30,14 @@ public class SkillControl : MonoBehaviour
     {
         HideSkillChk();
     }
+
+
+
+    public void SetSkillCooldown(int skillNum, float cooldownTime)
+    {
+        getSkillTimes[skillNum] = cooldownTime;
+    }
+
 
     public void HideSkillSetting(int skillNum)
     {
@@ -56,7 +63,7 @@ public class SkillControl : MonoBehaviour
                         hideSkillButtons[i].SetActive(false);
                     }
 
-                    hideSkillTimeTexts[i].text = getSkillTimes[i].ToString("00");
+                    hideSkillTimeTexts[i].text = getSkillTimes[i].ToString("0.00");
 
                     float time = getSkillTimes[i] / skillTimes[i];
                     hideSkillImages[i].fillAmount = time;

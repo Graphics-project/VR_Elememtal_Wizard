@@ -5,6 +5,11 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour
 {
     public GameObject player;
+    public SkillControl fireSkillControl;
+    public SkillControl iceSkillControl;
+    public SkillControl earthSkillControl;
+
+    private SkillControl currentSkillControl;
 
     // skills
     public List<GameObject> fireSkills = new List<GameObject>();
@@ -12,7 +17,8 @@ public class SkillManager : MonoBehaviour
     public List<GameObject> earthSkills = new List<GameObject>();
 
 
-    private float[] skill_coolTimes = { 1, 6, 10, 15 };
+    public float[] skill_coolTimes = { 1, 6, 10, 15 };
+    private float[] skillCooldowns = new float[4];
 
 
 
@@ -80,17 +86,22 @@ public class SkillManager : MonoBehaviour
     {
         elementType = ElementInit();
         SetElementSkillType(elementType);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         skillSelect();
+        UpdateCooldowns();
 
         // if (skillSign && Time.time >= timeTofire)
-        if (skillSign)
+        if (skillSign && skillCooldowns[skillNum] <= 0)
         {
             skillUse();
+            skillCooldowns[skillNum] = skill_coolTimes[skillNum];
+            currentSkillControl.HideSkillSetting(skillNum);
+            currentSkillControl.SetSkillCooldown(skillNum, skill_coolTimes[skillNum]);
         }
         skillSign = false;
     }
@@ -118,16 +129,35 @@ public class SkillManager : MonoBehaviour
         if (elementType == 0)
         {
             currentSkills = fireSkills;
+            currentSkillControl = fireSkillControl;
         }
         else if (elementType == 1)
         {
             currentSkills = iceSkills;
+            currentSkillControl = iceSkillControl;
+
         }
         else if (elementType == 2)
         {
             currentSkills = earthSkills;
+            currentSkillControl = earthSkillControl;
         }
 
+    }
+
+
+    // -------------------------------------------
+    //  UpdateCooldowns()
+    // -------------------------------------------
+    void UpdateCooldowns()
+    {
+        for (int i = 0; i < skillCooldowns.Length; i++)
+        {
+            if (skillCooldowns[i] > 0)
+            {
+                skillCooldowns[i] -= Time.deltaTime;
+            }
+        }
     }
 
 
@@ -235,22 +265,6 @@ public class SkillManager : MonoBehaviour
 
 
 
-    // // -------------------------------------------
-    // //  BasicSkill()
-    // // -------------------------------------------
-    // void BasicSkill()
-    // {
-    //     if (firePoint != null)
-    //     {
-    //         timeTofire = Time.time + 1 / skillToSpawn.GetComponent<ProjectileMove>().fireRate;
-    //         Instantiate(skillToSpawn, firePoint.transform.position, firePoint.transform.rotation);
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("No Fire Point");
-    //     }
-    // }
-
     // -------------------------------------------
     //  SpawnSimpleSkills()
     // -------------------------------------------
@@ -264,19 +278,6 @@ public class SkillManager : MonoBehaviour
         Quaternion startRotate = Quaternion.LookRotation(forwardDirection) * startRotate_offest;
         Instantiate(skillToSpawn, startPos, startRotate);
     }
-
-
-
-    // -------------------------------------------
-    //  SpawnSimpleSkills2()
-    // -------------------------------------------
-    //void SpawnSimpleSkills2(Vector3 startPos_offset, Quaternion startRotate_offest)
-    //{
-    //    Vector3 startPos = player.transform.TransformPoint(startPos_offset);
-    //    Quaternion startRotate = startRotate_offest;
-
-    //    Instantiate(skillToSpawn, startPos, startRotate);
-    //}
 
 
 
