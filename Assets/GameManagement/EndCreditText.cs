@@ -4,11 +4,14 @@ using UnityEngine;
 public class EndCreditText : MonoBehaviour
 {
     public TextMeshProUGUI endCreditText;
-    public int kills = GameManager.instance.kills;
-    public float elapsedTime = GameManager.instance.elapsedTime;
+    public int kills;
+    public float elapsedTime;
 
     void Start()
     {
+        kills = GameManager.instance.kills;
+        elapsedTime = GameManager.instance.elapsedTime;
+
         endCreditText.text = "The Elemental Wizard\n\n" +
         "처치한 적 수 : " + kills + "\n\n" +
         "총 플레이 시간 : " + (int)elapsedTime / 60 + "분 " + (int)elapsedTime % 60 + "초\n\n" +
@@ -24,6 +27,6 @@ public class EndCreditText : MonoBehaviour
         "게임 시스템 디자인 : 고병하, 이영민, 이승원\n\n" +
         "시나리오 : 고병하, 이영민, 이승원\n\n" +
         "게임 테스트 : 고병하, 이영민, 이승원\n\n\n\n\n" +
-        "Very Special Thanks to Prof. 박준\n";
+        "Very Special Thanks to Prof. 박 준\n";
     }
 }

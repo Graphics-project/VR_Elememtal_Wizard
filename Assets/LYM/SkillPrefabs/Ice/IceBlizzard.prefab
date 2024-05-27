@@ -4920,7 +4920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f25ed2826bb4bd489b235e20c5dc75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deal: 3
+  deal: 2
   destroyTime: 5
 --- !u!135 &9176175730861024483
 SphereCollider:

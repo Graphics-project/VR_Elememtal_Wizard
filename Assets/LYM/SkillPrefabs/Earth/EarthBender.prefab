@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7316021781081916837}
   m_Layer: 1
   m_Name: EarthBender
-  m_TagString: PlayerProjectile
+  m_TagString: StunProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
