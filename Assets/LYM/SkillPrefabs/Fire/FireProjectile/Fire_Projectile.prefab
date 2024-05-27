@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3847035012091019671}
   - component: {fileID: 4336367754294778951}
   - component: {fileID: 8372229288690168966}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Fire_Projectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f25ed2826bb4bd489b235e20c5dc75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deal: 0
+  destroyTime: 3
 --- !u!1 &1316373115024379350
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5019657170923123590}
   - component: {fileID: 3493930675791580436}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +273,7 @@ GameObject:
   - component: {fileID: 2734809261065824901}
   - component: {fileID: 606828283379490037}
   - component: {fileID: 8413634554406953683}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5101,7 +5103,7 @@ GameObject:
   - component: {fileID: 8156890621363046889}
   - component: {fileID: 311410794540791747}
   - component: {fileID: 5967239839826030261}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9928,6 +9930,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7872480814416782302}
     m_Modifications:
+    - target: {fileID: 1866692896978666, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
       propertyPath: m_IsActive
       value: 1

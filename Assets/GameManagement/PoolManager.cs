@@ -6,7 +6,7 @@ public class PoolManager : MonoBehaviour
 {
     public GameObject[] prefabs;
     List<GameObject>[] pools;
-    public Spawner spawner;
+    Spawner spawner;
 
     private void Awake()
     {
