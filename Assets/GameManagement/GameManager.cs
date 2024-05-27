@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         Time.timeScale = 0;
         inGameUIController.setGameOverUI();
+        Invoke("ReturnToMainMenu", 3f);
     }
     public void GameClear()
     {
