@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private float startTime;
     private bool isGameActive;
+    private bool isGameOver;
     public float elapsedTime;
 
     private void Awake()
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             elapsedTime = Time.time - startTime;
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
             {
                 isGameActive = false;
                 PauseGame();
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
             {
                 isGameActive = true;
                 ResumeGame();
@@ -70,11 +71,14 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameActive = false;
+        isGameOver = true;
+        Time.timeScale = 0;
         inGameUIController.setGameOverUI();
     }
     public void GameClear()
     {
-
+        isGameActive = false;
+        SceneManager.LoadScene("End Credit");
     }
 
     public void LevelCoroutine()
