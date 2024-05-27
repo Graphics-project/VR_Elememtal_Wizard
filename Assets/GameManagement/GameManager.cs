@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
-
+        //pool.transform.position = new Vector3(10, -50, -340);
         level++;
     }
 
