@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaaf8d4687237b44db3775c1591e633b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
   player: {fileID: 0}
   fireSkills:
   - {fileID: 1205959874057735137, guid: c8c67bd74fbbef4488f8cb20e7df2aef, type: 3}
@@ -61,3 +60,4 @@ MonoBehaviour:
   - {fileID: 4447171060469134481, guid: e02a6ef98f25b084883db4279df6861a, type: 3}
   - {fileID: 5413698069371683259, guid: 10aff2f2f90bc924ea96aa107ac1eb63, type: 3}
   - {fileID: 4447171060469134481, guid: 43fc131a45dfb3b47983888a00b3c67c, type: 3}
+  elementType: 2

@@ -5,12 +5,13 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour
 {
     public GameObject player;
+    public SkillControl skillControl;
+
 
     // skills
     public List<GameObject> fireSkills = new List<GameObject>();
     public List<GameObject> iceSkills = new List<GameObject>();
     public List<GameObject> earthSkills = new List<GameObject>();
-
 
 
     // 0: fire
