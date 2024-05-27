@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     {
         if (currentHealth < 0)
         {
-            //GameManager.instance.PauseGame();
+            GameManager.instance.GameOver();
         }
     }
 

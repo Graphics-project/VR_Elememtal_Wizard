@@ -74,7 +74,8 @@ public class GameManager : MonoBehaviour
     }
     public void GameClear()
     {
-
+        isGameActive = false;
+        SceneManager.LoadScene("End Credit");
     }
 
     public void LevelCoroutine()
