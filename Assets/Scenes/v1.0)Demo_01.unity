@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18064961, g: 0.22615081, b: 0.30712065, a: 1}
+  m_IndirectSpecularColor: {r: 0.18064907, g: 0.22615024, b: 0.30711925, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3052,6 +3052,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Y
       objectReference: {fileID: 0}
+    - target: {fileID: 2473048420503699544, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2709937791893907932, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3072,6 +3076,18 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 186053131}
+    - target: {fileID: 3924174842769632144, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
+      propertyPath: m_Value
+      value: 9.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717387771298903030, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717387771298903030, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 196
+      objectReference: {fileID: 0}
     - target: {fileID: 4793658020208572818, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -3092,6 +3108,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5486560282494156959, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5568712049719189301, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
@@ -3100,9 +3120,17 @@ PrefabInstance:
       propertyPath: m_text
       value: X
       objectReference: {fileID: 0}
+    - target: {fileID: 6566667579626877231, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6863180009391520176, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
       propertyPath: m_text
       value: X
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232013454554776741, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7387344288163248979, guid: 28d7f0b747eaff549a716a0c5047ccb0, type: 3}
       propertyPath: m_text

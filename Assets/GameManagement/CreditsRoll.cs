@@ -9,7 +9,7 @@ public class CreditsRoll : MonoBehaviour
     void Update()
     {
         creditsText.transform.Translate(Vector3.up * speed * Time.deltaTime);
-        if (creditsText.transform.position.y >= 20)
+        if (creditsText.transform.position.y >= 40)
         {
             SceneManager.LoadScene("New Start Scene");
         }
