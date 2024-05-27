@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3008169777930348401}
   m_Layer: 6
   m_Name: Ice_Projectile
-  m_TagString: PlayerProjectile
+  m_TagString: SlowProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f25ed2826bb4bd489b235e20c5dc75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deal: 0
+  destroyTime: 3
 --- !u!1 &7331762372702202726
 GameObject:
   m_ObjectHideFlags: 0

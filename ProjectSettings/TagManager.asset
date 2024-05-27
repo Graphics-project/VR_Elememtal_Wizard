@@ -9,6 +9,7 @@ TagManager:
   - Golem
   - PlayerProjectile
   - EnemyProjectile
+  - SlowProjectile
   layers:
   - Default
   - TransparentFX

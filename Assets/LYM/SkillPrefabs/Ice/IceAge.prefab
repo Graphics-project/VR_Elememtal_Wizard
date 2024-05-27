@@ -4901,7 +4901,7 @@ GameObject:
   - component: {fileID: 657814203520350949}
   m_Layer: 0
   m_Name: IceAge
-  m_TagString: PlayerProjectile
+  m_TagString: SlowProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
