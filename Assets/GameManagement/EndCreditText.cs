@@ -23,12 +23,7 @@ public class EndCreditText : MonoBehaviour
         "UI/UX : 이승원\n\n" +
         "게임 시스템 디자인 : 고병하, 이영민, 이승원\n\n" +
         "시나리오 : 고병하, 이영민, 이승원\n\n" +
-        "게임 테스트 : 고병하, 이영민, 이승원\n\n" +
-        "[사용한 에셋]\n\n" +
-        "Battle Wizard Poly Art\n\n" +
-        "POLYDesert\n\n" +
-        "RPG Poly Pack - Lite\n\n" +
-        "Low-Poly Simple Nature Pack\n\n\n\n\n" +
+        "게임 테스트 : 고병하, 이영민, 이승원\n\n\n\n\n" +
         "Very Special Thanks to Prof. 박준\n";
     }
 }
