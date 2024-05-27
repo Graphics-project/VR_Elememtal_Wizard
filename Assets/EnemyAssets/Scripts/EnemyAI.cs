@@ -112,8 +112,6 @@ public class EnemyAI : MonoBehaviour
                 ChasePlayer();
             else if (status_name == Attack)
                 AttackPlayer();
-
-
         }
     }
 
@@ -282,10 +280,10 @@ public class EnemyAI : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        //DestroyImmediate(gameObject, true);
-        //gameObject.SetActive(false);
         Destroy(gameObject);
         GameManager.instance.decCurrentEnemyNum();
+        if (gameObject.tag == "Golem")
+            GameManager.instance.GameClear();
     }
 
     private void OnDrawGizmosSelected()

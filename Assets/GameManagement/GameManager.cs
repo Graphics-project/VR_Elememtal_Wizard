@@ -73,6 +73,10 @@ public class GameManager : MonoBehaviour
         //uiManager.ShowGameOverScreen(elapsedTime);
         //SceneManager.LoadScene("1 Start Scene");
     }
+    public void GameClear()
+    {
+
+    }
 
     public void LevelCoroutine()
     {
