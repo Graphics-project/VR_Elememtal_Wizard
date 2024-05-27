@@ -5,8 +5,8 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     public GameObject[] prefabs;
-
     List<GameObject>[] pools;
+    public Spawner spawner;
 
     private void Awake()
     {
@@ -15,6 +15,7 @@ public class PoolManager : MonoBehaviour
         {
             pools[i] = new List<GameObject>();
         }
+        spawner = GameManager.instance.spawner;
     }
 
     public GameObject Get(int index)
@@ -33,7 +34,7 @@ public class PoolManager : MonoBehaviour
 
         if (!select)
         {
-            select = Instantiate(prefabs[index], transform);
+            select = Instantiate(prefabs[index], spawner.GetSpawnPosition(), Quaternion.identity);
             pools[index].Add(select);
         }
 
